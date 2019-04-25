@@ -7,4 +7,3 @@ Programa que simula um sistema de email local que possibilita as seguintes funç
 - login/registro
 - escrever nova mensagem
 - gerenciar emails enviados e recebidos
-
