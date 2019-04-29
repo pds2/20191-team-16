@@ -27,7 +27,7 @@ de uma nova conta e mover toda a caixa de email.
 
 Critérios para aceitação:
 
-Como usuario desse sistema, gostaria poder listar , no máximo, as 10 mensagens mais antigas
+Como usuario desse sistema, gostaria poder listar as mensagens mais antigas
 (de mais de um mes atrás) para deletá-las da caixa de entrada, com facilidade.
 
 Critérios para aceitação:
