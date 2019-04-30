@@ -18,9 +18,9 @@ mais de uma vez.
 
 Critérios para aceitação:
 
- -Inserir o nome dos destinatarios, um a um, até que nada mais seja inserido(Enter sem nada inserido).
- -Verificar se os usuarios inseridos estão cadastrados no sistema e enviar as mensagens um a um.
- -Retornar uma mensagem de erro, caso a mensagem não ter sido enviada para um usuario selecionado
+ *Inserir o nome dos destinatarios, um a um, até que nada mais seja inserido(Enter sem nada inserido).
+ *Verificar se os usuarios inseridos estão cadastrados no sistema e enviar as mensagens um a um.
+ *Retornar uma mensagem de erro, caso a mensagem não ter sido enviada para um usuario selecionado
   por ele nao estar cadastrado no sistema.
 
 # 2º)
