@@ -43,10 +43,8 @@ Critérios para aceitação:
  - Inserir o novo nome da conta.
  - Verificar se ha conflito com o nome de outros usuários cadastrados.
  - Substituir o antigo nome no sistema.
- 
  - Inserir a nova senha da conta.
  - Substituir a senha antiga.
- 
  - Fechar a sessão para serem válidas as alterações feitas.
 
 # 4º)
