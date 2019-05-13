@@ -29,18 +29,13 @@ void criar_user(std::string nome, std::string senha)
     //Escrevendo nos arquivos de texto 
     std::fstream write_pass;
     write_pass.open(("Data/" + nome + "/password.txt").c_str(), std::ios::out);
-    
     write_pass << senha << std::endl;
-
     write_pass.close();
 
     std::fstream write_log;
     write_log.open("Data/log.txt", std::ios::ate | std::ios::in | std::ios::out);
-
     write_log << nome << std::endl;
-
-    //Criando email de boas vindas -W.I.P-
-
+    
     std::cout << "\nUsuario criado com sucesso. Aproveite o LAN MAIL :)" << std::endl;
 }
 
@@ -67,7 +62,6 @@ bool match_log(std::string nome)
 void registro()
 {
     std::cout << "\nIniciando processo de criacao de conta"           <<std::endl;
-
     std::cout << "\nPara cancelar, digite --sair em qualquer passo" <<std::endl;
 
     std::string nome;
@@ -100,7 +94,11 @@ void registro()
                 continue;
             }
         }
-        else criar_log();
+        else
+        {   
+            logtxt.close();
+            criar_log();
+        }
 
         loop1 = false;
     }
