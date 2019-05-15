@@ -110,7 +110,7 @@ void configurar(std::string nome)
                         char resp;
 
                         std::cout <<"\nDeseja realmente mudar seu nome de usuario?" << std::endl;
-                        std::cout <<"\nDigite [S] se sim ou [N] caso contrario";
+                        std::cout <<"\nDigite [S] se sim ou [N] caso contrario" << std::endl;
                         std::cin >> resp;
 
                         if(resp == 's' || 'S')
@@ -165,7 +165,7 @@ void configurar(std::string nome)
                 while (loop3)
                 {
                     std::cout <<"\nDeseja realmente deletar sua conta?" << std::endl;
-                    std::cout <<"\nDigite [S] se sim ou [N] caso contrario";
+                    std::cout <<"\nDigite [S] se sim ou [N] caso contrario" ,, std::endl;
                     std::cin >> resp1;
 
                     if(resp1 == 's' || 'S')
