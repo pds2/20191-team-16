@@ -67,7 +67,7 @@ bool match_log(std::string nome)
 
 void registro()
 {
-    std::cout << "\nIniciando processo de criacao de conta..."           <<std::endl;
+    std::cout << "\nIniciando processo de criacao de conta..." <<std::endl;
     std::cout << "\nPara cancelar, digite --sair em qualquer passo" <<std::endl;
 
     std::string nome;
