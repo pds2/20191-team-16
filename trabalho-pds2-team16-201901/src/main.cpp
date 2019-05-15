@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "registro_01.h"
+#include "config_01.h"
 
 int main()
 {
@@ -11,6 +12,10 @@ int main()
     std::cout << "-Teste com funcao de registro-" << std::endl;
 
     registro();
+    
+    std::cout << "-Teste com funcao de configurar-" << std::endl;
+    
+    configurar();
 
     return 0;
 }
