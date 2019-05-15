@@ -60,7 +60,6 @@ void Mensagem::set_assun(std::string assun)
 }
 
 //Metodos
-
 void Mensagem::delete_msg()
 {
     //Place Holder
