@@ -9,7 +9,7 @@ private:
 
     bool _run;
 
-    //SubMetodos
+    //SubMetodos (clocar aqui os métodos que só são executados dentro de outros métodos)
     void limpar_buffer();
 
     void criar_log();
