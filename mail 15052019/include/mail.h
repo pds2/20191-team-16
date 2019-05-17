@@ -32,7 +32,7 @@ public:
 
     //Metodos
     short init();
-    void login();
+    bool login();
     void registro();
 };
 

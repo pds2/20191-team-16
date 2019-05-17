@@ -162,9 +162,72 @@ short Mail::init()
     return esc;
 }
 
-void Mail::login()
+bool Mail::login()
 {
-    //Place Holder
+    // Funcao para Login do usuario no sistema de email
+    std::string nome;
+    std::string senha;
+    std::string senha_cmpr; // String para comparar as senhas
+    std::fstream read_pass;
+    
+    while (true)
+    {   // Entrada do usuario e senha
+        std::cout << "\n[Iniciando processo de Login]\n[Digite --sair para cancelar]" << std::endl;
+        std::cout << "\n[Insira o nome de usuario]" << std::endl;
+        std::cin >> nome;
+        limpar_buffer();
+        std::cout << "\n[Insira a senha]" << std::endl;
+        std::cin >> senha;
+        limpar_buffer();
+        if((nome=="--sair") || (senha=="--sair"))
+        {
+            std::cout << "\n[Cancelando Login]" << std::endl;
+            return false;
+        }
+        // Caso o usuario exista, verifica-se a senha
+        if(match_log(nome))
+        {
+            //Abertura do arquivo password.txt na pasta do usuario
+            read_pass.open(("Data/"+ nome +"/password.txt").c_str(), std::ios::in);
+            if(!read_pass)
+            {
+                std::cout << "\n[Arquivo password.txt nao encontrado]" << std::endl;
+                exit(0);
+            }
+            else
+            {
+                // Comparando a senha registrada com a entrada do usuario
+                read_pass >> senha_cmpr;
+                if(senha_cmpr == senha)
+                {   
+                    nome.clear();
+                    senha.clear();
+                    senha_cmpr.clear();
+                    read_pass.close();
+                    std:: << "\n[Login realizado com sucesso]" << std::endl;
+                    return true;
+                }
+                else
+                {   
+                    nome.clear();
+                    senha.clear();
+                    senha_cmpr.clear();
+                    read_pass.close();
+                    std::cout << "\n[Nome de usuario ou senha invalidos]\n[Tente novamente]" << std::endl;
+                    continue;
+                }
+            }
+        }
+        //Retornando ao inicio do processo caso o usuario não exista
+        else
+        {  
+            nome.clear();
+            senha.clear();
+            senha_cmpr.clear();
+            std::cout << "\n[Nome de usuario ou senha invalidos]\n[Tente novamente]" << std::endl;
+            continue;
+        }
+    }
 }
 
 void Mail::registro()
