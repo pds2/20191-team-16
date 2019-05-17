@@ -6,13 +6,29 @@
 
 int main()
 {
-    system("clear");
+    Mail mail(true);
 
-    Mail x(true);
+    system ("clear");
 
-    std::cout << "-Teste com funcao de registro-" << std::endl;
+    while (true)
+    {
+        switch(mail.init())
+        {
+            case 1:
+            
+                std::cout << "\n[Login]" << std::endl;
 
-    x.registro();
+                break;
+            case 2:
+
+                mail.registro();
+                break;
+            case 3:
+
+                std::cout << "\n[Fechando programa]" << std::endl;
+                return 0;
+        }
+    }
 
     return 0;
 }
