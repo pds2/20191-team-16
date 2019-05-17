@@ -9,10 +9,10 @@ private:
 
     bool _run;
 
-    //SubMetodos (clocar aqui os métodos que só são executados dentro de outros métodos)
+    //SubMetodos
     void limpar_buffer();
-
     void criar_log();
+    bool scan_nome(std::string nome);
     bool match_log(std::string nome);
     void criar_user(std::string nome, std::string senha);
 
