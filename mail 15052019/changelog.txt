@@ -20,4 +20,5 @@
 	*Adição do submétodo scan_nome(std::string nome) (para a definição de nome de user  )
 	*Implementação de programação defensiva          (verificando existência de arquivos)
 
--Primeiro upload do metodo    init()
+-Primeiro upload do metodo init()                        [master]
+-Update do main.cpp                                      [master]
