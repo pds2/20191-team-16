@@ -5,7 +5,6 @@
 #include <iostream>
 
 //Construtor
-
 Mail::Mail(bool run)
 {
     _run = run;
@@ -18,7 +17,6 @@ Mail::~Mail()
 }
 
 //Submetodos
-
 void Mail::limpar_buffer()
 {
     //Limpa o buffer de entrada do teclado
@@ -32,10 +30,48 @@ void Mail::criar_log()
     system("touch Data/log.txt");
 }
 
+bool Mail::scan_nome(std::string nome)
+{
+    /*Funcao que verifica se a string nao possui
+      caracteres que impessam a criacao de diretorios*/
+
+    /*No caso do Linux/Unix (incluindo Mac OS), o unico 
+      caractere proibido e o "/" (foward slash) */
+
+    for (unsigned int i = 0; i < nome.size(); i++)
+    {
+        /*Verificacao de acordo com a tabela ASCII,
+          no formato decimal */
+        if (nome[i] == 47)
+        {
+            std::cout << "\n[O nome inserido possui o caractere invalido (/)]" << std::endl;
+            return false;
+        }
+    }
+
+    /*Por coveniencia o numero maximo de caracteres
+      permitidos e 20 */
+
+    if (nome.size() > 20)
+    {
+        std::cout << "\n[O nome inserido extrapolou o limite de 20 caracteres]" << std::endl;
+        return false;
+    }
+    return true;
+}
+
 bool Mail::match_log(std::string nome)
 {
+    //Funcao para achar um nome dentro do log.txt
+    
     std::fstream read_log;
     read_log.open("Data/log.txt", std::ios::in);
+
+    if (!read_log)
+    {
+        std::cout << "\n[Arquivo log.txt nao encontrado]" << std::endl;
+        exit(0);
+    }
 
     //String para comparacao
     std::string compr;
@@ -79,89 +115,151 @@ void Mail::criar_user(std::string nome, std::string senha)
 
     std::fstream write_log;
     write_log.open("Data/log.txt", std::ios::ate | std::ios::in | std::ios::out);
+
+    if (!write_log)
+    {
+        std::cout << "\n[Arquivo log.txt nao encontrado]" << std::endl;
+        exit(0);
+    }
+
     write_log << nome << std::endl;
     write_log.close();
 
-    std::cout << "\nUsuario criado com sucesso. Aproveite, " << nome << " :)." << std::endl;
+    /*Criando email de boas vindas W.I.P (Ainda e preciso determinar a forma como
+      as mensagens serao salvas no disco e  tambem determinar a funcao que setta 
+      a hora de envio da mensagem) */
 }
 
 //Metodos
-
- short Mail::init()
- {
+short Mail::init()
+{
     //Funcao que oferece as tres opcoes do inicio do programa (Login, Registro, Sair)
 
-    //Place Holder
+    std::cout << "\n[Nome do programa]" << std::endl;
 
-    return 0;
- }
+    short esc;
+
+    while (true)
+    {
+        std::cout << "\n[1]Login"    << std::endl;
+        std::cout <<   "[2]Registro" << std::endl;
+        std::cout <<   "[3]Sair"     << std::endl;
+
+        std::cout << "\nEscolha: ";
+        std::cin  >> esc;
+
+        limpar_buffer();
+
+        if ((esc > 3) || (esc < 1))
+        {
+            std::cout << "\n[Voce nao escolheu uma das opcoes oferecidas]" << std::endl;
+            continue;
+        }
+
+        break;
+    }
+    
+    return esc;
+}
 
 void Mail::login()
 {
     //Place Holder
 }
 
- void Mail::registro()
- {
-    std::cout << "\nIniciando processo de criacao de conta..." <<std::endl;
-    std::cout << "\nPara cancelar, digite --sair em qualquer passo" <<std::endl;
-
+void Mail::registro()
+{
     std::string nome;
-
-    bool loop1 = true;
+    std::string senha;
     std::fstream read_log;
 
-    while (loop1)
+    while (true)
     {
-        std::cout << "\nDefina o nome do seu usuario: ";
-        std::cin  >> nome;
+        std::cout << "\n[Iniciando processo de criacao de conta...     ]" << std::endl;
+        std::cout <<   "[Para cancelar, digite --sair em qualquer passo]" << std::endl;
 
-        limpar_buffer();
-
-        if (nome == "--sair")
+        while (true)
         {
-            std::cout << "\nCancelando processo de registro..." << std::endl;
-            return;
-        }
+            std::cout << "\n[Criando conta (1/3)]" << std::endl;
+            std::cout << "Defina o nome do seu usuario: ";
+            std::cin  >> nome;
 
-        read_log.open("Data/log.txt", std::ios::in);
+            limpar_buffer();
 
-        if (read_log)
-        {
-            if(match_log(nome))
+            if (!scan_nome(nome))
             {
-                std::cout << "\nSinto muito, esse nome de usuario ja existe :(." << std::endl;
-                read_log.close();
+                nome.clear();
                 continue;
             }
+
+            if (nome == "--sair")
+            {
+                std::cout << "\n[Cancelando processo de registro...]" << std::endl;
+                return;
+            }
+
+            read_log.open("Data/log.txt", std::ios::in);
+
+            if (read_log)
+            {
+                if(match_log(nome))
+                {
+                    std::cout << "\n[Sinto muito, esse nome de usuario ja existe :(]" << std::endl;
+                    read_log.close();
+                    continue;
+                }
+            }
+            else
+            {
+                read_log.close();
+                criar_log();
+            }
+
+            break;
         }
-        else
-        {
-            read_log.close();
-            criar_log();
-        }
 
-        loop1 = false;
-    }
-
-    std::string senha;
-
-    bool loop2 = true;
-    while (loop2)
-    {
-        std::cout << "\nAgora defina sua senha: ";
+        std::cout << "\n[Criando conta (2/3)]" << std::endl;
+        std::cout << "Agora defina sua senha: ";
         std::cin  >> senha;
 
         limpar_buffer();
 
         if (senha == "--sair")
         {
-            std::cout << "\nCancelando processo de registro..." << std::endl;
+            std::cout << "\n[Cancelando processo de registro... ]" << std::endl;
             return;
         }
 
-        loop2 = false;
-    }
+        std::cout << "\n(Criando conta [3/3])" << std::endl;
 
+        std::cout << "Nome : " << nome  << std::endl;
+        std::cout << "Senha: " << senha << std::endl;
+
+        char *esc = new char;
+
+        std::cout << "\nTem certeza que quer criar uma conta com esses dados?" << std::endl;
+        std::cout << "Escolha (([S]im/[N]ao) Default: N): ";
+        std::cin  >> *esc;
+
+        limpar_buffer();
+
+        if ((*esc == 'S') || (*esc == 's'))
+        {
+            delete esc;
+            break;
+        }
+        else
+        {
+            //Limpando as strings de nome e senha
+            nome.clear();
+            senha.clear();
+
+            delete esc;
+            continue;
+        }        
+    }
+    
     criar_user(nome, senha);
- }
+
+    std::cout << "\n[Usuario criado]" << std::endl;
+}
