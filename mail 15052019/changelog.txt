@@ -24,3 +24,8 @@
 -Update do main.cpp                                      [master]
 
 -Primeiro upload do método de Login em Mail(.h/.cpp) 	 [master]
+
+
+-23/05/2019-
+
+-Update na funcao Mail::login(); no Mail(.cpp)           [master]
