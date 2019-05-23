@@ -7,7 +7,6 @@
 
 -Primeiro upload dos arquivos de classes (.h/.cpps)      [master]
 -Primeiro upload do método de registro   (.h/.cpp)       [master]
-
 -Primeiro upload do método de configuração de conta (.h) [master]
 
 -17/05/2019-
@@ -22,10 +21,10 @@
 
 -Primeiro upload do metodo init()                        [master]
 -Update do main.cpp                                      [master]
-
 -Primeiro upload do método de Login em Mail(.h/.cpp) 	 [master]
 
 
 -23/05/2019-
 
 -Update na funcao Mail::login(); no Mail(.cpp)           [master]
+-Update no método de configuracao de conta (.h)		 [master]
