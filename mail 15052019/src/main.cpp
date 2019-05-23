@@ -7,7 +7,7 @@
 int main()
 {
     Mail mail(true);
-
+    system ("resize -s 24 80");
     system ("clear");
 
     while (true)
