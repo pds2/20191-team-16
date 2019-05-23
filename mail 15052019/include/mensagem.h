@@ -15,7 +15,7 @@ private:
 public:
 
     //Construtor
-    Mensagem();
+    Mensagem(std::fstream email);
 
     //Destrutor
     ~Mensagem();
@@ -33,8 +33,8 @@ public:
     void set_assun(std::string assun);
 
     //Metodos
-    virtual void exibir_msg();
-    virtual void escrever_msg();
+    virtual void exibir_msg()   = 0;
+    virtual void escrever_msg() = 0;
 
     void delete_msg();
     void enviar_msg();
