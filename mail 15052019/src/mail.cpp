@@ -204,7 +204,7 @@ bool Mail::login()
                     senha.clear();
                     senha_cmpr.clear();
                     read_pass.close();
-                    std:: << "\n[Login realizado com sucesso]" << std::endl;
+                    std::cout << "\n[Login realizado com sucesso]" << std::endl;
                     return true;
                 }
                 else
