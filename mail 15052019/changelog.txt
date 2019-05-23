@@ -5,13 +5,13 @@
 
 -15/05/2019-
 
--Primeiro upload dos arquivos de classes (.h/.cpps)      [master]
--Primeiro upload do método de registro   (.h/.cpp)       [master]
--Primeiro upload do método de configuração de conta (.h) [master]
+-Primeiro upload dos arquivos de classes (.h/.cpps)        [master]
+-Primeiro upload do método de registro   (.h/.cpp)         [master]
+-Primeiro upload do método de configuração de conta (.h)   [master]
 
 -17/05/2019-
 
--Update do método registro() (.h/.cpp)                   [master]
+-Update do método registro() (.h/.cpp)                     [master]
 
 	*Mudanças estéticas
 	*Substituição dos while (loop1), com saída loop1 = false, para
@@ -19,12 +19,13 @@
 	*Adição do submétodo scan_nome(std::string nome) (para a definição de nome de user  )
 	*Implementação de programação defensiva          (verificando existência de arquivos)
 
--Primeiro upload do metodo init()                        [master]
--Update do main.cpp                                      [master]
--Primeiro upload do método de Login em Mail(.h/.cpp) 	 [master]
+-Primeiro upload do metodo init()                          [master]
+-Update do main.cpp                                        [master]
+-Primeiro upload do método de Login em Mail(.h/.cpp) 	   [master]
 
 
 -23/05/2019-
 
--Update na funcao Mail::login(); no Mail(.cpp)           [master]
--Update no método de configuracao de conta (.h)		 [master]
+-Update na funcao Mail::login(); no Mail(.cpp)             [master]
+-Update no método de configuracao de conta (.h)		   [master]
+-Adcionado chamada system("resize -s 24 80") no main(.cpp) [master]
