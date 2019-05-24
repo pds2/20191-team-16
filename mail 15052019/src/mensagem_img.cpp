@@ -3,9 +3,21 @@
 #include <fstream>
 
 //Construtor
-Mensagem_img::Mensagem_img(std::fstream email)
+Mensagem_img::Mensagem_img(std::string target, std::string user, std::string box) :
+Mensagem(target, user, box)
 {
-	//Place Holder
+	std::string linha;
+
+	while (!_mail.eof())
+	{
+		std::getline(_mail, linha);
+
+		_texto.push_back(linha);
+
+		linha.clear();
+	}
+
+	_mail.close();
 }
 
 //Destrutor

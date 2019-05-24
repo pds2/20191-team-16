@@ -1,23 +1,31 @@
 #include "mensagem.h"
 
 #include <string>
+#include <fstream>
 
 //Construtor
-Mensagem::Mensagem()
+Mensagem::Mensagem(std::string target, std::string user, std::string box)
 {
-    //Place Holder
+    _mail.open(("Data/" + user + "/" + box + "/" + target).c_str(), std::ios::in);
+
+    _data = new int;
+
+    _mail >> *_data;
+    _mail >> _remet;
+    _mail >> _desti;
+    _mail >> _assun;
 }
 
 //Destrutor
 Mensagem::~Mensagem()
 {
-    //Place Holder
+    delete _data;
 }
 
 //Getters
 int Mensagem::get_data()
 {
-    return _data;
+    return *_data;
 }
 
 std::string Mensagem::get_remet()

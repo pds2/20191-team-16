@@ -1,11 +1,25 @@
 #include "mensagem_lst.h"
 
+#include <string>
+#include <vector>
 #include <fstream>
 
 //Construtor
-Mensagem_lst::Mensagem_lst(std::fstream email)
+Mensagem_lst::Mensagem_lst(std::string target, std::string user, std::string box) : 
+Mensagem(target, user, box)
 {
-	//Place Holder
+	std::string linha;
+
+	while (!_mail.eof())
+	{
+		_mail >> linha;
+
+		_texto.push_back(linha);
+
+		linha.clear();
+	}
+
+	_mail.close();
 }
 
 //Destrutor
