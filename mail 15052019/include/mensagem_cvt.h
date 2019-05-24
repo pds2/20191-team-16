@@ -4,21 +4,20 @@
 #include "mensagem.h"
 
 #include <string>
-#include <fstream>
 
 class Mensagem_cvt : public Mensagem {
 
 private:
 
-	std::string anfit;
-	std::string convi;
-	std::string local;
-	std::string data;
+	std::string _anfit;
+	std::string _convi;
+	std::string _local;
+	std::string _dataevt;
 
 public:
 
 	//Construtor
-	Mensagem_cvt(std::fstream email);
+	Mensagem_cvt(std::string target, std::string user, std::string box);
 
 	//Destrutor
 	~Mensagem_cvt();

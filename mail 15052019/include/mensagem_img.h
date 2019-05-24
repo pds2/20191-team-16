@@ -14,7 +14,7 @@ private:
 public:
 
 	//Construtor
-	Mensagem_img(std::fstream email);
+	Mensagem_img(std::string target, std::string user, std::string box);
 
 	//Destrutor
 	~Mensagem_img();

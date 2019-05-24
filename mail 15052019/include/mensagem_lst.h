@@ -16,7 +16,7 @@ private:
 public:
 
 	//Construtor
-	Mensagem_lst(std::fstream email);
+	Mensagem_lst(std::string target, std::string user, std::string box);
 
 	//Destrutor
 	~Mensagem_lst();

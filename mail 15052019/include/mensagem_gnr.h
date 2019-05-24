@@ -11,12 +11,12 @@ class Mensagem_gnr : public Mensagem {
 
 private:
 
-	std::vector <std::string> texto;  
+	std::vector <std::string> _texto;  
 
 public:
 
 	//Construtor
-	Mensagem_gnr(std::fstream email);
+	Mensagem_gnr(std::string target, std::string user, std::string box);
 
 	//Destrutor
 	~Mensagem_gnr();

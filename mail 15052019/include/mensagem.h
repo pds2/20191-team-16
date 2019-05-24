@@ -2,20 +2,26 @@
 #define SUPER_CLASS_MENSAGEM_H
 
 #include <string>
+#include <fstream>
 
 class Mensagem {
 
 private:
 
-    int _data;
+    int *_data;
+
     std::string _remet;
     std::string _desti;
     std::string _assun;
 
+protected:
+
+    std::fstream _mail;
+
 public:
 
     //Construtor
-    Mensagem(std::fstream email);
+    Mensagem(std::string target, std::string user, std::string box);
 
     //Destrutor
     ~Mensagem();
