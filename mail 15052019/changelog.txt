@@ -29,3 +29,7 @@
 -Update no método de configuracao de conta (.h)		   [master]
 -Adcionado chamada system("resize -s 24 80") no main(.cpp) [master]
 -Adicionado os arquivos de subclasse de Mensagem (.h/.cpp) [master]
+
+-24/05/2019-
+
+-Update nos construtores dos arquivos(.h/.cpp)de subclasse [master]
