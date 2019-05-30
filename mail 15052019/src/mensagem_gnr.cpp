@@ -3,10 +3,11 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <iostream>
 
 //Construtor
-Mensagem_gnr::Mensagem_gnr(std::string target, std::string user, std::string box) : 
-Mensagem(target, user, box)
+Mensagem_gnr::Mensagem_gnr(std::string user, std::string box, std::string target) : 
+Mensagem(user, box, target)
 {
 	std::string linha;
 
@@ -29,12 +30,13 @@ Mensagem_gnr::~Mensagem_gnr()
 }
 
 //Metodos
-void Mensagem_cvt::exibir_msg()
+void Mensagem_gnr::exibir_msg()
 {
-	//Place Holder
+	for (int i = 0; i < _texto.size(); i++)
+		std::cout << _texto[i] << std::endl;
 }
 
-void Mensagem_cvt::escrever_msg()
+void Mensagem_gnr::escrever_msg()
 {
 	//Place Holder
 }
