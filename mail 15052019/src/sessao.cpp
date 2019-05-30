@@ -50,7 +50,7 @@ void Sessao::set_boxflag(short boxflag)
 }
 
 //Submetodos
-void Sessao::limpar_buffer()
+void Sessao::limpa_buffer()
 {
     //Limpa o buffer de entrada do teclado
     std::cin.clear();
