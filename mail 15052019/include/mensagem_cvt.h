@@ -12,12 +12,13 @@ private:
 	std::string _anfit;
 	std::string _convi;
 	std::string _local;
+	std::string _event;
 	std::string _dataevt;
 
 public:
 
 	//Construtor
-	Mensagem_cvt(std::string target, std::string user, std::string box);
+	Mensagem_cvt(std::string user, std::string box, std::string target);
 
 	//Destrutor
 	~Mensagem_cvt();

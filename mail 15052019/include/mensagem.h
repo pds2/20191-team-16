@@ -8,7 +8,9 @@ class Mensagem {
 
 private:
 
-    int *_data;
+    short *_lido;
+
+    long *_data;
 
     std::string _remet;
     std::string _desti;
@@ -21,18 +23,20 @@ protected:
 public:
 
     //Construtor
-    Mensagem(std::string target, std::string user, std::string box);
+    Mensagem(std::string user, std::string box, std::string target);
 
     //Destrutor
     ~Mensagem();
 
     //Getters
-    int get_data();
+    short get_lido();
+    long get_data();
     std::string get_remet();
     std::string get_desti();
     std::string get_assun();
 
     //Setters
+    void set_lido(short lido);
     void set_data();
     void set_remet(std::string remet);
     void set_desti(std::string desti);

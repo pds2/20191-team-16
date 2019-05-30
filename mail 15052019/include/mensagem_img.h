@@ -3,18 +3,20 @@
 
 #include "mensagem.h"
 
+#include <string>
+#include <vector>
 #include <fstream>
 
 class Mensagem_img : public Mensagem {
 
 private:
 
-	int esc;
+	std::vector <std::string> _imagem;
 
 public:
 
 	//Construtor
-	Mensagem_img(std::string target, std::string user, std::string box);
+	Mensagem_img(std::string user, std::string box, std::string target);
 
 	//Destrutor
 	~Mensagem_img();

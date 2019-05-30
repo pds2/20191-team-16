@@ -7,16 +7,16 @@
 #include <vector>
 #include <fstream>
 
-class Mensagem_lista : public Mensagem {
+class Mensagem_lst : public Mensagem {
 
 private:
 
-	std::vector <std::string> lista;
+	std::vector <std::string> _lista;
 
 public:
 
 	//Construtor
-	Mensagem_lst(std::string target, std::string user, std::string box);
+	Mensagem_lst(std::string user, std::string box, std::string target);
 
 	//Destrutor
 	~Mensagem_lst();

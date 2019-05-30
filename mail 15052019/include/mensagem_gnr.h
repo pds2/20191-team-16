@@ -16,7 +16,7 @@ private:
 public:
 
 	//Construtor
-	Mensagem_gnr(std::string target, std::string user, std::string box);
+	Mensagem_gnr(std::string user, std::string box, std::string target);
 
 	//Destrutor
 	~Mensagem_gnr();
