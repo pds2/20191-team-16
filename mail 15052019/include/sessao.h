@@ -17,6 +17,13 @@ private:
     short _boxflag;
 
     std::vector <Mensagem> _box;
+    
+    //Submetodos
+    void limpar_buffer();
+    bool match_log_(std::string nome2);
+    void set_user(std::string nome, std::string nome2);
+    void set_password(std::string nome, std::string senha);
+    void del_conta(std::string nome);
 
 public:
 
@@ -37,13 +44,6 @@ public:
     void set_senha(std::string senha);
 
     void set_boxflag(short boxflag);
-    
-    //Submetodos
-    void limpar_buffer();
-    bool match_log_(std::string nome2);
-    void set_user(std::string nome, std::string nome2);
-    void set_password(std::string nome, std::string senha);
-    void del_conta(std::string nome);
 
     //Metodos
     void clear_box();
