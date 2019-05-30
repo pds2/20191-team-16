@@ -19,7 +19,7 @@ private:
     std::vector <Mensagem> _box;
     
     //Submetodos
-    void limpar_buffer();
+    void limpa_buffer();
     bool match_log_(std::string nome2);
     void set_user(std::string nome, std::string nome2);
     void set_password(std::string nome, std::string senha);
