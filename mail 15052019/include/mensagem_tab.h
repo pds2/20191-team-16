@@ -11,12 +11,14 @@ class Mensagem_tab : public Mensagem {
 
 private:
 
-	std::vector <std::vector <std::string> > tab;
+	short *_unipl;
+
+	std::vector <std::string> _tab;
 
 public:
 
 	//Construtor
-	Mensagem_tab(std::fstream email);
+	Mensagem_tab(std::string user, std::string box, std::string target);
 
 	//Destrutor
 	~Mensagem_tab();
