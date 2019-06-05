@@ -32,7 +32,7 @@ public:
 
     //Metodos
     short init();
-    bool login();
+    std::string login();
     void registro();
 };
 
