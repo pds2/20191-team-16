@@ -162,32 +162,47 @@ short Mail::init()
     return esc;
 }
 
-bool Mail::login()
+std::string Mail::login()
 {
     // Funcao para Login do usuario no sistema de email
+    // Pede-se a entrada de um nome e uma senha que serao verificadas
+    // Se os dados entrados estiverem corretos, retorna-se o nome
+    // do usuario, caso contrário os dados são limpados e o processo de login
+    // e reiniciado.
+    // A funcao para quando o usuario digita --sair, retornando "false".
     std::string nome;
     std::string senha;
     std::string senha_cmpr; // String para comparar as senhas
     std::fstream read_pass;
     
     while (true)
-    {   // Entrada do usuario e senha
+    {   
         std::cout << "\n[Iniciando processo de Login]\n[Digite --sair para cancelar]" << std::endl;
+        // ENTRADA DO NOME DE USUARIO
         std::cout << "\n[Insira o nome de usuario]" << std::endl;
         std::cin >> nome;
         limpar_buffer();
+        // RETURN CASO NOME = --SAIR
+        if(nome=="--sair")
+        {
+            std::cout << "\n[Cancelando Login]" << std::endl;
+            return "false";
+        }
+        // ENTRADA DA SENHA
         std::cout << "\n[Insira a senha]" << std::endl;
         std::cin >> senha;
         limpar_buffer();
-        if((nome=="--sair") || (senha=="--sair"))
+        // RETURN CASO SENHA = --SAIR
+        if(senha=="--sair")
         {
             std::cout << "\n[Cancelando Login]" << std::endl;
-            return false;
+            return "false";
         }
-        // Caso o usuario exista, verifica-se a senha
+        
+        //VERIFICA-SE A EXISTENCIA DO USUARIO
         if(match_log(nome))
         {
-            //Abertura do arquivo password.txt na pasta do usuario
+            //ABERTURA DO PASSWORD.TXT NA PASTA DO USUARIO
             read_pass.open(("Data/"+ nome +"/password.txt").c_str(), std::ios::in);
             if(!read_pass)
             {
@@ -196,19 +211,18 @@ bool Mail::login()
             }
             else
             {
-                // Comparando a senha registrada com a entrada do usuario
+                //COMPARANDO A SENHA REGISTRADA COM A ENTRADA DO USER
                 read_pass >> senha_cmpr;
                 if(senha_cmpr == senha)
-                {   
-                    nome.clear();
+                {   //CASO AS SENHAS COINCIDAM
                     senha.clear();
                     senha_cmpr.clear();
                     read_pass.close();
                     std::cout << "\n[Login realizado com sucesso]" << std::endl;
-                    return true;
+                    return nome;
                 }
                 else
-                {   
+                {   //CASO AS SENHAS NAO COINCIDAM
                     nome.clear();
                     senha.clear();
                     senha_cmpr.clear();
@@ -218,9 +232,8 @@ bool Mail::login()
                 }
             }
         }
-        //Retornando ao inicio do processo caso o usuario não exista
         else
-        {  
+        {   //RETORNANDO AO INICIO DO PROCESSO CASO O USUARIO NAO EXISTA
             nome.clear();
             senha.clear();
             senha_cmpr.clear();
