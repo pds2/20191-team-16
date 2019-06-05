@@ -11,20 +11,22 @@ class Mensagem_gnr : public Mensagem {
 
 private:
 
-	std::vector <std::string> _texto;  
+	//As linhas escritas da mensagem
+	std::vector <std::string> _texto;
 
 public:
 
 	//Construtor
-	Mensagem_gnr(std::string user, std::string box, std::string target);
+	Mensagem_gnr(std::string file , short lido       , long data,
+				 std::string remet, std::string desti,
+				 std::string assun, std::vector <std::string> texto);
 
-	//Destrutor
-	~Mensagem_gnr();
+	//Getters
+	std::vector <std::string> get_texto();
 
 	//Metodos
-	void exibir_msg() override;
-	void escrever_msg() override;
+	virtual void exibir_msg();
+	virtual void escrever_msg();
 };
 
 #endif
-

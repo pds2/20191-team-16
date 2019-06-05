@@ -8,36 +8,40 @@ class Mensagem {
 
 private:
 
-    short *_lido;
+    //Nome do arquivo de texto salvo nas caixas de entrada e saida
+    std::string _file;
 
-    long *_data;
+    //Variavel que define se uma mensagem ja foi ou nao lida
+    short _lido;
 
+    //Data de emissao da mensagem, no formato [AAAAMMDDHHMMSS]
+    long  _data;
+
+    //Remetente, destinatario e assunto da mensagem
     std::string _remet;
     std::string _desti;
     std::string _assun;
 
-protected:
-
-    std::fstream _mail;
-
 public:
 
     //Construtor
-    Mensagem(std::string user, std::string box, std::string target);
-
-    //Destrutor
-    ~Mensagem();
+    Mensagem(std::string file , short lido       , long data,
+             std::string remet, std::string desti, std::string assun);
 
     //Getters
     short get_lido();
-    long get_data();
+
+    long  get_data();
+
     std::string get_remet();
     std::string get_desti();
     std::string get_assun();
 
     //Setters
     void set_lido(short lido);
+
     void set_data();
+
     void set_remet(std::string remet);
     void set_desti(std::string desti);
     void set_assun(std::string assun);

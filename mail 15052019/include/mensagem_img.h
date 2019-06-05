@@ -5,24 +5,26 @@
 
 #include <string>
 #include <vector>
-#include <fstream>
 
 class Mensagem_img : public Mensagem {
 
 private:
 
+	//Os "pixels" da imagem
 	std::vector <std::string> _imagem;
 
 public:
 
 	//Construtor
-	Mensagem_img(std::string user, std::string box, std::string target);
+	Mensagem_img(std::string file , short lido       , long data,
+				 std::string remet, std::string desti,
+				 std::string assun, std::vector <std::string> imagem);
 
-	//Destrutor
-	~Mensagem_img();
+	//Getters
+	std::vector <std::string> get_imagem();
 
 	//Metodos
-	void exibir_msg() override;
+	void exibir_msg()   override;
 	void escrever_msg() override;
 };
 

@@ -5,26 +5,31 @@
 
 #include <string>
 #include <vector>
-#include <fstream>
 
 class Mensagem_tab : public Mensagem {
 
 private:
 
-	short *_unipl;
+	//Numero de elementos por fileira na tabela
+	short _unipl;
 
+	//Os elementos da tabela
 	std::vector <std::string> _tab;
 
 public:
 
 	//Construtor
-	Mensagem_tab(std::string user, std::string box, std::string target);
+	Mensagem_tab(std::string file , short lido       , long data,
+				 std::string remet, std::string desti,
+				 std::string assun, short unipl,
+				 std::vector <std::string> tab);
 
-	//Destrutor
-	~Mensagem_tab();
+	//Getters
+	short get_unipl();
+	std::vector <std::string> get_tab();
 
 	//Metodos
-	void exibir_msg() override;
+	void exibir_msg()   override;
 	void escrever_msg() override;
 };
 

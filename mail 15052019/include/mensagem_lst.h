@@ -5,24 +5,31 @@
 
 #include <string>
 #include <vector>
-#include <fstream>
 
 class Mensagem_lst : public Mensagem {
 
 private:
 
+    //Tarefa do qual se trata a lista
+    std::string _tarefa;
+
+    //Lista de elementos da tarefa em questao
 	std::vector <std::string> _lista;
 
 public:
 
 	//Construtor
-	Mensagem_lst(std::string user, std::string box, std::string target);
+	Mensagem_lst(std::string file , short lido        , long data,
+				 std::string remet, std::string desti ,
+				 std::string assun, std::string tarefa,
+				 std::vector <std::string> lista);
 
-	//Destrutor
-	~Mensagem_lst();
+    //Getters
+    std::string get_tarefa();
+    std::vector <std::string> get_lista();
 
 	//Metodos
-	void exibir_msg() override;
+	void exibir_msg()   override;
 	void escrever_msg() override;
 };
 
