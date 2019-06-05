@@ -5,40 +5,24 @@
 #include <iostream>
 
 //Construtor
-Mensagem::Mensagem(std::string user, std::string box, std::string target)
-{
-    _data = new long;
-    _lido = new short;
+Mensagem::Mensagem
+(std::string file  , short lido, long data,
+ std::string remet , std::string desti,
+ std::string assun) :
 
-    _mail.open(("Data/" + user + "/" + box + "/" + target).c_str(), std::ios::in);
-
-    _mail >> *_lido;
-    _mail >> *_data;
-    _mail >> _remet;
-    _mail >> _desti;
-
-    _mail.seekg(1, std::ios::cur);
-    
-    std::getline (_mail, _assun);
-}
-
-//Destrutor
-Mensagem::~Mensagem()
-{
-    delete _data;
-    delete _lido;
-}
+_file(file)  , _lido(lido)  , _data(data),
+_remet(remet), _desti(desti),
+_assun(assun) {}
 
 //Getters
-
 short Mensagem::get_lido()
 {
-    return *_lido;
+    return _lido;
 }
 
 long Mensagem::get_data()
 {
-    return *_data;
+    return _data;
 }
 
 std::string Mensagem::get_remet()
@@ -60,7 +44,7 @@ std::string Mensagem::get_assun()
 
 void Mensagem::set_lido(short lido)
 {
-    *_lido = lido;
+    _lido = lido;
 }
 void Mensagem::set_data(/* Place Holder */)
 {
@@ -86,6 +70,12 @@ void Mensagem::set_assun(std::string assun)
 }
 
 //Metodos
+
+void Mensagem::exibir_msg()
+{
+    std::cout << "Ok!" << std::endl;
+}
+
 void Mensagem::delete_msg()
 {
     //Place Holder

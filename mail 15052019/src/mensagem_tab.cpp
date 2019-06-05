@@ -2,47 +2,39 @@
 
 #include <string>
 #include <vector>
-#include <fstream>
 #include <iostream>
 
 //Construtor
-Mensagem_tab::Mensagem_tab(std::string user, std::string box, std::string target) : 
-Mensagem(user, box, target)
+Mensagem_tab::Mensagem_tab
+(std::string file , short lido       , long data,
+ std::string remet, std::string desti,
+ std::string assun, short unipl,
+ std::vector <std::string> tab) :
+
+Mensagem(file, lido, data, remet, desti, assun),
+
+_unipl(unipl), _tab(tab) {}
+
+//Getters
+short Mensagem_tab::get_unipl()
 {
-	_unipl = new short;
-
-	_mail >> *_unipl;
-
-	//Jogando todas os elementos da tabela do arquivo no vector de tabela
-
-	std::string elemen;
-
-	while (!_mail.eof())
-	{
-		_mail >> elemen;
-
-		_tab.push_back(elemen);
-
-		elemen.clear();
-	}
-
-	_mail.close();
+    return _unipl;
 }
 
-//Destrutor
-Mensagem_tab::~Mensagem_tab()
+std::vector <std::string> Mensagem_tab::get_tab()
 {
-	delete _unipl;
+    return _tab;
 }
+
 
 //Metodos
 void Mensagem_tab::exibir_msg()
 {
 	short count = 0;
 
-	for (int i = 0; i < _tab.size(); i++)
+	for (unsigned int i = 0; i < _tab.size(); i++)
 	{
-		if (count == *_unipl)
+		if (count == _unipl)
 		{
 			if (i == _tab.size() - 1) break;
 
