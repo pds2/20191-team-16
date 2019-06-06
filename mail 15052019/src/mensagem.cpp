@@ -49,9 +49,19 @@ void Mensagem::set_lido(short lido)
 void Mensagem::set_data(/* Place Holder */)
 {
     /*Essa funcao vai pegar o horario do relogio do OS e passar para um
-      inteiro no formato [AAAAMMDDHHMM], diferentemente dos outros setters */
+      inteiro no formato [AAAAMMDDHHMMSS], diferentemente dos outros setters */
 
-    //Place Holder
+    time_t now;
+    struct tm *timeinfo;
+    char dataTime[14];
+    long data;
+    
+    now = time(NULL);
+    timeinfo = localtime(&now);
+    strftime (dataTime, 14, "%Y%m%d%H%M%S",timeinfo);
+    data = atol(dataTime);
+    
+    *_data = data;
 }
 
 void Mensagem::set_remet(std::string remet)
