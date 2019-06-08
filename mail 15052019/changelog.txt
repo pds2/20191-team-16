@@ -37,3 +37,8 @@
 -05/06/2019-
 
 -Update da funcao Mail::Login() (.h/.cpp) 		   [master]
+
+-07/06/2019-
+
+-Atualização dos construtores de mensagem-                 [master]
+-Adicionado funções de listagem das boxes no sessao.cpp/.h-[master]
