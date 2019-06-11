@@ -30,5 +30,22 @@ void Mensagem_gnr::exibir_msg()
 
 void Mensagem_gnr::escrever_msg()
 {
-	//Place Holder
+	//Funcao para escrever uma mensagem generica
+	//Pede-se para o usuario escrever a mensagem
+	//Desejada na entrada(loop).
+	//Para parar o loop da entrada, digita-se --ok
+	std::string linhas;
+	std::cout << "[Digite a mensagem a ser enviada:]" << std::endl;
+	std::cout <<"[Digite --ok para parar]" << std::endl;
+
+	while(getline(std::cin,linhas)){
+	    if(linhas == "--ok"){
+	        break;
+	    }
+	    else{
+	        _texto.push_back(linhas);
+	        continue;
+	    }
+	}
+	return;
 }
