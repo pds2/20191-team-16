@@ -51,5 +51,27 @@ void Mensagem_tab::exibir_msg()
 
 void Mensagem_tab::escrever_msg()
 {
-	//Place Holder
+	//Funcao pra escrever em tabela
+	//Pede-se para o usuario para inserir 
+	//Os elementos da tabela
+	//Para encerrar a funcao, digita-se --ok
+	std::string palavra;
+
+	std::cout << "\n[Escrevendo Tabela:]" << std::endl;
+	std::cout << "[Insira o numero de elementos por linha:]" << std::endl;
+	std::cin >> _unipl;
+	std::cout << "[Insira os elementos: ]" << std::endl;
+	std::cout << "[Digite --ok para parar]" << std::endl;	
+			
+	while(true){
+		palavra.clear();
+		std::cin >> palavra;
+		if(palavra == "--ok"){
+			break;
+		}			
+		else{
+			_tab.push_back(palavra);
+		}
+	}			
+	return;	
 }
