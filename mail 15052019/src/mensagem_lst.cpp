@@ -32,5 +32,24 @@ void Mensagem_lst::exibir_msg()
 
 void Mensagem_lst::escrever_msg()
 {
+	//Funcao para escrever os itens da lista
+	//Pede-se ao usuario que entre com os itens desejados
+	//Para parar o loop da entrada, deve-se digitar --ok
+    std::string items;
+    
+	std::cout <<"[\nEscreva os itens da lista:]" << std::endl;
+	std::cout <<"[Digite --ok para parar]" << std::endl;
 
+	while(true){
+	    items.clear();
+	    std::cin >> items;
+	    if(items == "--ok"){
+	        break;
+	    }
+	    else{
+	        _lista.push_back(items);
+	        continue;
+	    }
+	}
+	return;
 }
