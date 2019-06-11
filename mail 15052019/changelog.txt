@@ -42,3 +42,7 @@
 
 -Atualização dos construtores de mensagem-                 [master]
 -Adicionado funções de listagem das boxes no sessao.cpp/.h-[master]
+
+-10/06/2019-
+
+-Adcionado funções para escrever mensagens (.cpp)-	   [master]
