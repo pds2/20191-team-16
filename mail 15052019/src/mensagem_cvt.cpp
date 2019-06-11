@@ -54,6 +54,20 @@ void Mensagem_cvt::exibir_msg()
 }
 
 void Mensagem_cvt::escrever_msg()
-{
-	//Place Holder
+{	
+	//Funcao para escrever a mensagem do tipo convite
+	//Pede-se ao usuario que entre com informacoes
+	//Que serao utilizadas num modelo pre-feito de convite
+	std::cout << "\n[Digite as informações pedidas para criar um convite]" << std::endl;
+	std::cout << "[Insira o nome do anfitriao:]" << std::endl;
+	std::cin >> _anfit;
+	std::cout << "[Insira o nome do convidado:]" << std::endl;
+	std::cin >> _convi;
+	std::cout << "[Insira o nome do lugar:]" << std::endl;
+	std::cin >> _lugar;
+	std::cout << "[Insira tipo de evento:]" << std::endl;
+	std::cin >> _event;
+	std::cout << "[Insira a data do evento:]" << std::endl;
+	std::cin >> _dataevt;
+	return;
 }
