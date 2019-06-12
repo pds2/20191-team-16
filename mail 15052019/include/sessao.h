@@ -3,8 +3,15 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
+#include <iostream>
 
 #include "mensagem.h"
+#include "mensagem_gnr.h"
+#include "mensagem_lst.h"
+#include "mensagem_cvt.h"
+#include "mensagem_tab.h"
+#include "mensagem_img.h"
 
 class Sessao {
 
@@ -28,6 +35,10 @@ private:
     std::vector <Mensagem_tab> _box3;
     std::vector <Mensagem_img> _box4;
     
+    /*Vetor que armazena em ordem decrescente a data de envio de cada
+    mensagem. Usada como referencia para listar as mensagem em ordem*/
+    std::vector <long> _time;
+    
     //Submetodos
     void limpa_buffer();
     bool match_log_(std::string nome2);
@@ -35,9 +46,9 @@ private:
     void set_password(std::string senha);
     void del_conta();
     
-    void op1_alt_nome (std::string nome2);
-    void op2_alt_senha(std::string senha);
-    void op3_del_conta ();
+    void op1_alt_nome (std::string nome2); // alterar nome usuario
+    void op2_alt_senha(std::string senha); // alterar senha
+    void op3_del_conta (); // deletar conta
     
     bool filtro_msg(Mensagem &msg);
     void add_msg_time(long data);
@@ -73,8 +84,9 @@ public:
     //Setters
     void set_nome(std::string nome);
     void set_senha(std::string senha);
-
     void set_boxflag(short boxflag);
+    
+    void set_box(std::string box, std::string read_log);
 
     //Metodos
     void limpar_box();
