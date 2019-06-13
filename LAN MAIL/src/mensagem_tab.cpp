@@ -85,7 +85,7 @@ void Mensagem_tab::exibir_msg()
     std::cout << "\n";
 }
 
-void Mensagem_tab::escrever_msg(std::string nome)
+/*void Mensagem_tab::escrever_msg(std::string nome)
 {
 	//Funcao pra escrever em tabela
 	//Pede-se para o usuario para inserir 
@@ -128,4 +128,4 @@ void Mensagem_tab::escrever_msg(std::string nome)
 	arq.close();
 
 	return;	
-}
+}*/
