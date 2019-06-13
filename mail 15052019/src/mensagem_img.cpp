@@ -1,5 +1,5 @@
 #include "mensagem_img.h"
-
+#include <fstream>
 #include <vector>
 #include <string>
 #include <iostream>
@@ -72,6 +72,8 @@ void Mensagem_img::escrever_msg()
 	//Caso a entrada esteja incorreta, limpa-se a string
 	//E pede-se uma nova entrada
 	std::string escolha;
+	std::fstream arq;
+
 	std::cout << "\n[Escolha a imagem desejada digitando o indice correspondente:]" << std::endl;
 	std::cout << "[0].Mario " << std::endl;
 	std::cout << "[1].Boo " << std::endl;
@@ -146,5 +148,22 @@ void Mensagem_img::escrever_msg()
 		}
 
 	}
+
+	std::string _file = std::to_string(_data);
+	arq.open(("Data/"+ nome +"/outbox/log_out.txt").c_str(), std::ios::app | std::ios::out);
+	arq << _file << " 4\n";
+	arq.close(); 
+
+	system(("touch Data/" + nome + "/outbox/" + _file + ".txt").c_str());
+	arq.open(("Data/" + nome + "/outbox/" + _file + ".txt").c_str(), std::ios::out);
+	arq << _lido << "\n";
+	arq << _file << "\n";
+	arq << _data << "\n";
+	arq << _remetente << "\n";
+	arq << _destinatario << "\n";
+	arq << _assunto << "\n";
+	arq << _imagem << "\n";
+	arq.close();
+
 	return;
 }
