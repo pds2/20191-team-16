@@ -48,7 +48,7 @@ void Mensagem_lst::exibir_msg()
     std::cout << " ==============================================================================" << std::endl;
 }
 
-void Mensagem_lst::escrever_msg()
+void Mensagem_lst::escrever_msg(std::string nome)
 {
 	//Funcao para escrever os itens da lista
 	//Pede-se ao usuario que entre com os itens desejados
