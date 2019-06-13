@@ -934,9 +934,16 @@ void Sessao::config_conta()
 
     while (true)
     {
+        std::fstream cabecario;
+        cabecario.open("Assets/Config/cabecario.txt", std::ios::in);
+        
+        display_caixa(cabecario, "\033[3m");
+        
+        std::cout << "                                $: ";
         std::cin >> opcao;
+        
         limpar_buffer();
-
+        
         switch (opcao)
         {
             case 1:
