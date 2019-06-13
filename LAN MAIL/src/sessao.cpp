@@ -608,8 +608,6 @@ void Sessao::agir_box(long data, short j)
     }
 }
 
-void
-
 void Sessao::escrever_msg()
 {
 
