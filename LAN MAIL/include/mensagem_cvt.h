@@ -35,7 +35,7 @@ public:
 
 	//Metodos
 	void exibir_msg()   override;
-	void escrever_msg() override;
+	void escrever_msg(std::string) override;
 
 };
 
