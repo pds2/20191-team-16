@@ -106,7 +106,7 @@ private:
     /*Submetodo de op3_del_conta () .Funcao que exclui o diretorio do usuario e
     remove o nome dele do log.txt.*/
     void del_conta();
-    
+
     //Submetodo de config_conta(). Funcao que da a opcao de alterar o nome
     void op1_alt_nome(std::string nome2);
 
@@ -115,6 +115,12 @@ private:
 
     //Submetodo de config_conta(). Funcao que da a opcao de deletar a conta
     void op3_del_conta();
+
+    void escrever_msg_gnr(std::string assun);
+    void escrever_msg_lst(std::string assun);
+    void escrever_msg_cvt(std::string assun);
+    void escrever_msg_tab(std::string assun);
+    void escrever_msg_img(std::string assun);
 
 public:
 
@@ -179,6 +185,9 @@ public:
 
     //Funcao que escreve uma mensagem para poder enviar a outros usuarios
     void escrever_msg();
+
+    //Funcao que envia a mensagem
+    void enviar_msg();
 
     /*Função que permite ao usuário alterar suas configurações de registro, que ocorrerão
      no disco. (Alterar nome de usuário/Alterar senha/Deletar conta/voltar ao hub)*/

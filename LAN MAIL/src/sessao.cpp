@@ -321,15 +321,15 @@ bool Sessao::match_log_(std::string nome2)
 {
     std::fstream read_log;
     read_log.open("Data/log.txt", std::ios::in);
-    
+
     std::string compr;
-    
+
     while (true)
     {
         read_log >> compr;
-        
+
         if (read_log.eof()) break;
-        
+
         if (nome2 == compr)
         {
             read_log.close();
@@ -337,7 +337,7 @@ bool Sessao::match_log_(std::string nome2)
         }
         else compr.clear();
     }
-    
+
     read_log.close();
     return false;
 }
@@ -366,7 +366,7 @@ void Sessao::set_user(std::string nome2)
     for (int i=0;i<vetor.size();i++)
         rewrite_log << vetor[i] << std::endl;
     rewrite_log.close();
-    
+
     //modificar o nome do diretorio do usuario
     rename (("Data/" + _nome + "/").c_str(), ("Data/" + nome2 + "/").c_str());
     _nome = nome2;
@@ -385,7 +385,7 @@ void Sessao::del_conta()
 {
     //Excluindo o diretório do user
     remove(("Data/" + _nome).c_str());
-    
+
     //Removendo o nome do user do log.txt
     std::fstream remove_log;
     remove_log.open("Data/log.txt", std::ios::in );
@@ -406,14 +406,14 @@ void Sessao::del_conta()
     for (int i=0;i<vet.size();i++)
         remove_log << vet[i] << std::endl;
     remove_log.close();
-    
+
     exit(0);
 }
 
-void Sessao::op1_alt_nome(std::string nome2)
+void Sessao::op1_alt_nome(std::string nome3)
 {
     char resp;
-    
+
     while(true)
     {
         std::fstream nome1;
@@ -421,12 +421,12 @@ void Sessao::op1_alt_nome(std::string nome2)
 
         display_caixa(nome1, "\033[m");
 
-        td::cout << "                                $: ";
-        std::cin >> nome2;
+        std::cout << "                                $: ";
+        std::cin >> nome3;
 
         limpar_buffer();
 
-        if(match_log_(nome2))
+        if(match_log_(nome3))
         {
             std::fstream nomeerror;
             nomeerror.open("Assets/Config/nomeerror.txt");
@@ -444,14 +444,14 @@ void Sessao::op1_alt_nome(std::string nome2)
 
             display_caixa(nome2, "\033[m");
 
-            td::cout << "                                $: ";
+            std::cout << "                                $: ";
             std::cin >> resp;
 
             limpar_buffer();
 
             if(resp == 's' || resp == 'S')
             {
-                set_user(nome2);
+                set_user(nome3);
 
                 std::fstream nomesuccess;
                 nomesuccess.open("Assets/Config/nomesuccess.txt");
@@ -469,33 +469,33 @@ void Sessao::op1_alt_nome(std::string nome2)
 void Sessao::op2_alt_senha(std::string senha)
 {
     char resp;
-    
+
     while (true)
     {
         std::fstream senha1;
         senha1.open("Assets/Config/senha1.txt");
 
         display_caixa(senha1, "\033[m");
-   
+
         std::cout << "                                $: ";
         std::cin >> senha;
         limpar_buffer();
-        
+
         std::fstream senha2;
         senha2.open("Assets/Config/senha2.txt");
 
         display_caixa(senha2, "\033[m");
-   
+
         std::cout << "                                $: ";
         std::cin >> resp;
-        
+
         limpar_buffer();
-        
+
         if(resp == 's' || resp == 'S')
         {
             set_password(senha);
             std::fstream senhasuccess;
-            senhacuccess.open("Assets/Config/senhasuccess.txt");
+            senhasuccess.open("Assets/Config/senhasuccess.txt");
 
             display_caixa(senhasuccess, "\033[m");
 
@@ -508,7 +508,7 @@ void Sessao::op2_alt_senha(std::string senha)
 void Sessao::op3_del_conta()
 {
     char resp;
-    
+
     while(true)
     {
         std::fstream delete1;
@@ -535,6 +535,35 @@ void Sessao::op3_del_conta()
         break;
     }
 }
+
+void escrever_msg_gnr(assun)
+{
+    std::fstream gnr1;
+    gnr1.open("Assets/Write/Gnr/gnr1.txt");
+
+    display_caixa(gnr1, "\033[m");
+
+    std::string linha;
+    std::vector <std::string> texto;
+
+    int count = 0;
+
+    while (true)
+    {
+        std::getline(std::cin, linha)
+        if (linha == "--ok")
+            break;
+        else
+        {
+
+        }
+    }
+
+    std::cout << "                                $: ";
+
+
+}
+
 
 //Getters-----------------------------------------------------------------------
 std::string Sessao::get_nome()
@@ -866,19 +895,23 @@ void Sessao::escrever_msg()
 
         if      (esc == 0)
         {
-
+            escrever_msg_gnr(assun);
+        }
+        else if (esc == 1)
+        {
+            escrever_msg_lst(assun);
         }
         else if (esc == 2)
         {
-
+            escrever_msg_cvt(assun);
         }
         else if (esc == 3)
         {
-
+            escrever_msg_tab(assun);
         }
         else if (esc == 4)
         {
-
+            escrever_msg_img(assun);
         }
         else
         {
@@ -895,20 +928,20 @@ void Sessao::escrever_msg()
 void Sessao::config_conta()
 {
     int opcao;
-    std::string nome2;
+    std::string nome3;
     std::string senha;
     std::fstream read_log;
-    
+
     while (true)
     {
         std::cin >> opcao;
         limpar_buffer();
-        
+
         switch (opcao)
         {
             case 1:
             {
-                op1_alt_nome(nome2);
+                op1_alt_nome(nome3);
                 break;
             }
             case 2:
@@ -933,4 +966,9 @@ void Sessao::config_conta()
             }
         }
     }
+}
+
+void enviar_msg()
+{
+
 }
