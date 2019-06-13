@@ -1,6 +1,6 @@
 #include "gerais.h"
 #include "mensagem_img.h"
-
+#include <fstream>
 #include <vector>
 #include <string>
 #include <iostream>
