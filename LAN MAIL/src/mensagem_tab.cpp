@@ -1,6 +1,6 @@
 #include "gerais.h"
 #include "mensagem_tab.h"
-
+#include <fstream>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -87,5 +87,45 @@ void Mensagem_tab::exibir_msg()
 
 void Mensagem_tab::escrever_msg()
 {
-	//Place Holder
+	//Funcao pra escrever em tabela
+	//Pede-se para o usuario para inserir 
+	//Os elementos da tabela
+	//Para encerrar a funcao, digita-se --ok
+	std::string palavra;
+	std::fstream arq;
+
+	std::cout << "\n[Escrevendo Tabela:]" << std::endl;
+	std::cout << "[Insira o numero de elementos por linha:]" << std::endl;
+	std::cin >> _unipl;
+	std::cout << "[Insira os elementos: ]" << std::endl;
+	std::cout << "[Digite --ok para parar]" << std::endl;	
+			
+	while(true){
+		palavra.clear();
+		std::cin >> palavra;
+		if(palavra == "--ok"){
+			break;
+		}			
+		else{
+			_tab.push_back(palavra);
+		}
+	}
+	
+	std::string _file = std::to_string(_data);
+	arq.open(("Data/"+ nome +"/outbox/log_out.txt").c_str(), std::ios::app | std::ios::out);
+	arq << _file << " 3\n";
+	arq.close(); 
+
+	system(("touch Data/" + nome + "/outbox/" + _file + ".txt").c_str());
+	arq.open(("Data/" + nome + "/outbox/" + _file + ".txt").c_str(), std::ios::out);
+	arq << _lido << "\n";
+	arq << _file << "\n";
+	arq << _data << "\n";
+	arq << _remetente << "\n";
+	arq << _destinatario << "\n";
+	arq << _assunto << "\n";
+	arq << _tab << "\n";
+	arq.close();
+
+	return;	
 }
