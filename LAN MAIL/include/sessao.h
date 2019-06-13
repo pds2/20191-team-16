@@ -93,6 +93,29 @@ private:
       seguindo o polimorfismo estabelecido entre elas*/
     void print_msg(Mensagem &msg);
 
+    //Funcao para achar um nome dentro do log.txt
+    bool match_log_(std::string nome2);
+
+    /*Submetodo de op1_alt_nome(). funcao que modifica o nome do usuario no log.txt
+    e modifica o nome do diretorio do usuario*/
+    void set_user(std::string nome2);
+
+    //Submetodo de op2_alt_senha(). Funcao que modifica a senha no password.txt
+    void set_password(std::string senha);
+
+    /*Submetodo de op3_del_conta () .Funcao que exclui o diretorio do usuario e
+    remove o nome dele do log.txt.*/
+    void del_conta();
+    
+    //Submetodo de config_conta(). Funcao que da a opcao de alterar o nome
+    void op1_alt_nome(std::string nome2);
+
+    //Submetodo de config_conta(). Funcao que da a opcao de alterar a senha
+    void op2_alt_senha(std::string senha);
+
+    //Submetodo de config_conta(). Funcao que da a opcao de deletar a conta
+    void op3_del_conta();
+
 public:
 
     //Construtor
@@ -156,6 +179,10 @@ public:
 
     //Funcao que escreve uma mensagem para poder enviar a outros usuarios
     void escrever_msg();
+
+    /*Função que permite ao usuário alterar suas configurações de registro, que ocorrerão
+     no disco. (Alterar nome de usuário/Alterar senha/Deletar conta/voltar ao hub)*/
+    void config_conta();
 };
 
 #endif
