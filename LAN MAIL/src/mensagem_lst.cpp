@@ -1,6 +1,6 @@
 #include "gerais.h"
 #include "mensagem_lst.h"
-
+#include <fstream>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -50,5 +50,44 @@ void Mensagem_lst::exibir_msg()
 
 void Mensagem_lst::escrever_msg()
 {
+	//Funcao para escrever os itens da lista
+	//Pede-se ao usuario que entre com os itens desejados
+	//Para parar o loop da entrada, deve-se digitar --ok
+    std::string items;
+    std::fstream arq;
+    
+	std::cout <<"[\nEscreva os itens da lista:]" << std::endl;
+	std::cout <<"[Digite --ok para parar]" << std::endl;
 
+	while(true){
+	    items.clear();
+	    std::cin >> items;
+	    if(items == "--ok"){
+	        break;
+	    }
+	    else{
+	        _lista.push_back(items);
+	        continue;
+	    }
+	}
+
+	std::string _file = std::to_string(_data);
+	arq.open(("Data/"+ nome +"/outbox/log_out.txt").c_str(), std::ios::app | std::ios::out);
+	arq << _file << " 1\n";
+	arq.close(); 
+
+	system(("touch Data/" + nome + "/outbox/" + _file + ".txt").c_str());
+	arq.open(("Data/" + nome + "/outbox/" + _file + ".txt").c_str(), std::ios::out);
+	arq << _lido << "\n";
+	arq << _file << "\n";
+	arq << _data << "\n";
+	arq << _remetente << "\n";
+	arq << _destinatario << "\n";
+	arq << _assunto << "\n";
+	arq << _lista << "\n";
+	arq.close();
+
+
+
+	return;
 }
