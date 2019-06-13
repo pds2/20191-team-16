@@ -35,7 +35,7 @@ void Mensagem_gnr::exibir_msg()
     std::cout << " ==============================================================================" << std::endl;
 }
 
-void Mensagem_gnr::escrever_msg(std::string nome)
+/*void Mensagem_gnr::escrever_msg(std::string nome)
 {
 	//Funcao para escrever uma mensagem generica
 	//Pede-se para o usuario escrever a mensagem
@@ -82,4 +82,4 @@ void Mensagem_gnr::escrever_msg(std::string nome)
 	arq.close();
 
 	return;
-}
+}*/
