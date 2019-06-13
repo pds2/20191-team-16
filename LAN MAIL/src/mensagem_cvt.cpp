@@ -74,7 +74,7 @@ void Mensagem_cvt::exibir_msg()
     std::cout << " ==============================================================================" << std::endl;
 }
 
-void Mensagem_cvt::escrever_msg(std::string nome)
+/*void Mensagem_cvt::escrever_msg(std::string nome)
 {	
 	//Funcao para escrever a mensagem do tipo convite
 	//Pede-se ao usuario que entre com informacoes
@@ -117,4 +117,4 @@ void Mensagem_cvt::escrever_msg(std::string nome)
 
 
 	return;
-}
+}*/
