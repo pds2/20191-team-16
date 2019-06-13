@@ -12,6 +12,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <cstdio>
 
 //Posicao de corte para a string data
 #define SPLIT   8
@@ -314,6 +315,225 @@ void Sessao::delete_msg(Mensagem &msg)
 void Sessao::print_msg(Mensagem &msg)
 {
     msg.exibir_msg();
+}
+
+bool Sessao::match_log_(std::string nome2)
+{
+    std::fstream read_log;
+    read_log.open("Data/log.txt", std::ios::in);
+    
+    std::string compr;
+    
+    while (true)
+    {
+        read_log >> compr;
+        
+        if (read_log.eof()) break;
+        
+        if (nome2 == compr)
+        {
+            read_log.close();
+            return true;
+        }
+        else compr.clear();
+    }
+    
+    read_log.close();
+    return false;
+}
+
+void Sessao::set_user(std::string nome2)
+{
+    //modifica o nome do user no log.txt
+    std::fstream rewrite_log;
+    rewrite_log.open("Data/log.txt", std::ios::in );
+    std::vector<std::string> vetor;
+    std::string compr;
+    while (true)
+    {
+        rewrite_log >> compr;
+        if (rewrite_log.eof())
+            break;
+        else if (_nome == compr)
+            vetor.push_back(nome2);
+        else if (_nome != compr)
+            vetor.push_back(compr);
+        else
+            compr.clear();
+    }
+    rewrite_log.close();
+    rewrite_log.open("Data/log.txt", std::ios::out | std::ios::trunc);
+    for (int i=0;i<vetor.size();i++)
+        rewrite_log << vetor[i] << std::endl;
+    rewrite_log.close();
+    
+    //modificar o nome do diretorio do usuario
+    rename (("Data/" + _nome + "/").c_str(), ("Data/" + nome2 + "/").c_str());
+    _nome = nome2;
+}
+
+void Sessao::set_password(std::string senha)
+{
+    //modifica a senha no password.txt
+    std::fstream rewrite_pass;
+    rewrite_pass.open(("Data/" + _nome + "/password.txt").c_str(), std::ios::out | std::ios::trunc);
+    rewrite_pass << senha << std::endl;
+    rewrite_pass.close();
+}
+
+void Sessao::del_conta()
+{
+    //Excluindo o diretório do user
+    remove(("Data/" + _nome).c_str());
+    
+    //Removendo o nome do user do log.txt
+    std::fstream remove_log;
+    remove_log.open("Data/log.txt", std::ios::in );
+    std::vector<std::string> vet;
+    std::string compr;
+    while (true)
+    {
+        remove_log >> compr;
+        if (remove_log.eof())
+            break;
+        else if (_nome != compr)
+            vet.push_back(compr);
+        else
+            compr.clear();
+    }
+    remove_log.close();
+    remove_log.open("Data/log.txt", std::ios::out | std::ios::trunc);
+    for (int i=0;i<vet.size();i++)
+        remove_log << vet[i] << std::endl;
+    remove_log.close();
+    
+    exit(0);
+}
+
+void Sessao::op1_alt_nome(std::string nome2)
+{
+    char resp;
+    
+    while(true)
+    {
+        std::fstream nome1;
+        nome1.open("Assets/Config/nome1.txt");
+
+        display_caixa(nome1, "\033[m");
+
+        td::cout << "                                $: ";
+        std::cin >> nome2;
+
+        limpar_buffer();
+
+        if(match_log_(nome2))
+        {
+            std::fstream nomeerror;
+            nomeerror.open("Assets/Config/nomeerror.txt");
+
+            display_caixa(nomeerror, "\033[m");
+
+            botao_enter();
+
+            continue;
+        }
+        else
+        {
+            std::fstream nome2;
+            nome2.open("Assets/Config/nome2.txt");
+
+            display_caixa(nome2, "\033[m");
+
+            td::cout << "                                $: ";
+            std::cin >> resp;
+
+            limpar_buffer();
+
+            if(resp == 's' || resp == 'S')
+            {
+                set_user(nome2);
+
+                std::fstream nomesuccess;
+                nomesuccess.open("Assets/Config/nomesuccess.txt");
+
+                display_caixa(nomesuccess, "\033[m");
+
+                botao_enter();
+
+            }
+        }
+        break;
+    }
+}
+
+void Sessao::op2_alt_senha(std::string senha)
+{
+    char resp;
+    
+    while (true)
+    {
+        std::fstream senha1;
+        senha1.open("Assets/Config/senha1.txt");
+
+        display_caixa(senha1, "\033[m");
+   
+        std::cout << "                                $: ";
+        std::cin >> senha;
+        limpar_buffer();
+        
+        std::fstream senha2;
+        senha2.open("Assets/Config/senha2.txt");
+
+        display_caixa(senha2, "\033[m");
+   
+        std::cout << "                                $: ";
+        std::cin >> resp;
+        
+        limpar_buffer();
+        
+        if(resp == 's' || resp == 'S')
+        {
+            set_password(senha);
+            std::fstream senhasuccess;
+            senhacuccess.open("Assets/Config/senhasuccess.txt");
+
+            display_caixa(senhasuccess, "\033[m");
+
+            botao_enter();
+        }
+        break;
+    }
+}
+
+void Sessao::op3_del_conta()
+{
+    char resp;
+    
+    while(true)
+    {
+        std::fstream delete1;
+        delete1.open("Assets/Config/delete1.txt");
+
+        display_caixa(delete1, "\033[m");
+
+        std::cout << "                                $: ";
+        std::cin >> resp;
+
+        limpar_buffer();
+
+        if(resp == 's' || resp == 'S')
+        {
+            del_conta();
+
+            std::fstream deletesuccess;
+            deletesuccess.open("Assets/Config/deletesuccess.txt");
+
+            display_caixa(deletesuccess, "\033[m");
+
+            botao_enter();
+        }
+        break;
+    }
 }
 
 //Getters-----------------------------------------------------------------------
@@ -668,6 +888,49 @@ void Sessao::escrever_msg()
             display_caixa(writeerror2, "\033[31m");
 
             botao_enter();
+        }
+    }
+}
+
+void Sessao::config_conta()
+{
+    int opcao;
+    std::string nome2;
+    std::string senha;
+    std::fstream read_log;
+    
+    while (true)
+    {
+        std::cin >> opcao;
+        limpar_buffer();
+        
+        switch (opcao)
+        {
+            case 1:
+            {
+                op1_alt_nome(nome2);
+                break;
+            }
+            case 2:
+            {
+                op2_alt_senha(senha);
+                break;
+            }
+            case 3:
+            {
+                op3_del_conta();
+                break;
+            }
+            case 4:
+            {
+                exit(0);
+                break;
+            }
+            default:
+            {
+                std::cout << "\nopcao invalida" << std::endl;
+                continue;
+            }
         }
     }
 }
