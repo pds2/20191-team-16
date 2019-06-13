@@ -26,7 +26,7 @@ public:
 
 	//Metodos
 	virtual void exibir_msg();
-	virtual void escrever_msg();
+	virtual void escrever_msg(std::string);
 };
 
 #endif
