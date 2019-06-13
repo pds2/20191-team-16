@@ -66,7 +66,7 @@ void Mensagem_img::exibir_msg()
 	}
 }
 
-void Mensagem_img::escrever_msg()
+void Mensagem_img::escrever_msg(std::string nome)
 {
 	//Funcao para escolher a mensagem a ser enviada
 	//Pede-se ao usuario para entrar com um numeral
