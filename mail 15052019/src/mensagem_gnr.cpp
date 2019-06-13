@@ -35,6 +35,9 @@ void Mensagem_gnr::escrever_msg()
 	//Desejada na entrada(loop).
 	//Para parar o loop da entrada, digita-se --ok
 	std::string linhas;
+	std::fstream arq;
+	int numberoflines = 0;
+
 	std::cout << "[Digite a mensagem a ser enviada:]" << std::endl;
 	std::cout <<"[Digite --ok para parar]" << std::endl;
 
@@ -44,8 +47,32 @@ void Mensagem_gnr::escrever_msg()
 	    }
 	    else{
 	        _texto.push_back(linhas);
+	        numberoflines++;
 	        continue;
 	    }
 	}
+
+	if(numberoflines < 20){
+		for(int i = 1; i <= 20 - numberoflines; i++){
+			_texto.push_back("\n");
+		}
+	}
+
+	std::string _file = std::to_string(_data);
+	arq.open(("Data/"+ nome +"/outbox/log_out.txt").c_str(), std::ios::app | std::ios::out);
+	arq << _file << " 0\n";
+	arq.close(); 
+
+	system(("touch Data/" + nome + "/outbox/" + _file + ".txt").c_str());
+	arq.open(("Data/" + nome + "/outbox/" + _file + ".txt").c_str(), std::ios::out);
+	arq << _lido << "\n";
+	arq << _file << "\n";
+	arq << _data << "\n";
+	arq << _remetente << "\n";
+	arq << _destinatario << "\n";
+	arq << _assunto << "\n";
+	arq << _texto << "\n";
+	arq.close();
+
 	return;
 }
