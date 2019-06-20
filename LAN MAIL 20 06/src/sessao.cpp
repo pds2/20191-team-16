@@ -657,12 +657,11 @@ void Sessao::set_box()
 }
 
 void Sessao::user_status()
-{
+{	
     std::cout << " ============================================================================== " << std::endl;
 
-    std::cout << " = " << "Usuario logado: " << _nome << "                     " << "N. de mensagens: " << std::to_string(get_time_size())
-              << ajust_string((LINHASTATUSSIZE + _nome.size() + get_time_size())
-               , GAPSIZE2) << "=" << std::endl;
+    std::cout << " = " << "Usuario logado: " << _nome << "                      " << "N. de mensagens: " << get_time_size()
+              << ajust_string((LINHASTATUSSIZE + _nome.size() + (std::to_string(get_time_size())).size()), GAPSIZE2) << "=" << std::endl;
 
     std::cout << " ============================================================================== " << std::endl;
 }
