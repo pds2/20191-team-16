@@ -133,8 +133,7 @@ void Mensagem::exibir_cabe()
 		      			(linha == _file + " 0") ||
 		      			(linha == _file + " 1") ||
 		      			(linha == _file + " 2") ||
-		      			(linha == _file + " 3") ||
-			      		(linha == _file + " 4"))
+		      			(linha == _file + " 3"))
 			        			continue;
 
 			  bloco.push_back(linha);
