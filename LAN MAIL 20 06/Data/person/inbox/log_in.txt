@@ -1,0 +1,5 @@
+teste0.txt 0
+teste1.txt 0
+teste2.txt 0
+teste3.txt 0
+teste4.txt 0
