@@ -10,7 +10,6 @@
 #include "mensagem_gnr.h"
 #include "mensagem_lst.h"
 #include "mensagem_cvt.h"
-#include "mensagem_tab.h"
 #include "mensagem_img.h"
 
 #include <iostream>
