@@ -373,7 +373,7 @@ void Sessao::set_password(std::string senha)
 void Sessao::del_conta()
 {
     //Excluindo o diretório do user
-    remove(("Data/" + _nome).c_str());
+    system(("rm -rf Data/" + _nome).c_str());
 
     //Removendo o nome do user do log.txt
     std::fstream remove_log;
@@ -795,7 +795,10 @@ void Sessao::config_conta()
 
     while (true)
     {
+	display_caixa("Assets/Config/cabecario.txt", DEFAULT);
+	std::cout << "                                $: ";
         std::cin >> opcao;
+
         limpar_buffer();
 
         switch (opcao)
@@ -817,12 +820,10 @@ void Sessao::config_conta()
             }
             case 4:
             {
-                exit(0);
-                break;
+                return;
             }
             default:
             {
-                std::cout << "\nopcao invalida" << std::endl;
                 continue;
             }
         }
