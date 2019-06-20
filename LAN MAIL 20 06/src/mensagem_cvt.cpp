@@ -112,15 +112,59 @@ bool Mensagem_cvt::escrever_msg()
 	std::fstream arq;
 
 	display_caixa("Assets/Write/Cvt/cvt1.txt", DEFAULT);
+	std::cout << "                                $: ";
 	std::getline(std::cin,_anfit);
+	if (_anfit == "--sair")
+        {
+            display_caixa("Assets/Write/writecancel.txt", DEFAULT);
+            botao_enter();
+
+            return false;
+        }
+
 	display_caixa("Assets/Write/Cvt/cvt2.txt", DEFAULT);
+	std::cout << "                                $: ";
 	std::getline(std::cin,_convi);
+	if (_convi == "--sair")
+        {
+            display_caixa("Assets/Write/writecancel.txt", DEFAULT);
+            botao_enter();
+
+            return false;
+        }
+
 	display_caixa("Assets/Write/Cvt/cvt3.txt", DEFAULT);
+	std::cout << "                                $: ";
 	std::getline(std::cin, _lugar);
+	if (_lugar == "--sair")
+        {
+            display_caixa("Assets/Write/writecancel.txt", DEFAULT);
+            botao_enter();
+
+            return false;
+        }
+
 	display_caixa("Assets/Write/Cvt/cvt4.txt", DEFAULT);
+	std::cout << "                                $: ";
 	std::getline(std::cin, _event);
+	if (_event == "--sair")
+        {
+            display_caixa("Assets/Write/writecancel.txt", DEFAULT);
+            botao_enter();
+
+            return false;
+        }
+
 	display_caixa("Assets/Write/Cvt/cvt5.txt", DEFAULT);
+	std::cout << "                                $: ";
 	std::getline(std::cin, _dataevt);
+	if (_dataevt == "--sair")
+        {
+            display_caixa("Assets/Write/writecancel.txt", DEFAULT);
+            botao_enter();
+
+            return false;
+        }
 
 	display_caixa("Assets/Write/write3.txt", DEFAULT);
    	char esc;
