@@ -10,7 +10,6 @@
 #include "mensagem_gnr.h"
 #include "mensagem_lst.h"
 #include "mensagem_cvt.h"
-#include "mensagem_tab.h"
 #include "mensagem_img.h"
 
 class Sessao {
@@ -48,8 +47,7 @@ private:
     std::vector <Mensagem_gnr> _box0;
     std::vector <Mensagem_lst> _box1;
     std::vector <Mensagem_cvt> _box2;
-    std::vector <Mensagem_tab> _box3;
-    std::vector <Mensagem_img> _box4;
+    std::vector <Mensagem_img> _box3;
 
     /*Vetor que armazena em ordem decrescente a data de envio de cada mensagem.
     Usada como referencia para listar as mensagem em ordem*/
@@ -66,9 +64,6 @@ private:
                      std::string desti, std::string assun, std::fstream &read_target);
 
     void add_msg_cvt(std::string file , short lido, long data, std::string remet,
-                     std::string desti, std::string assun, std::fstream &read_target);
-
-    void add_msg_tab(std::string file , short lido, long data, std::string remet,
                      std::string desti, std::string assun, std::fstream &read_target);
 
     void add_msg_img(std::string file , short lido, long data, std::string remet,
