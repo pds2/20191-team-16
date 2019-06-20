@@ -104,6 +104,53 @@ void Mensagem::exibir_cabe()
     if (_lido == 0)
     {
         _lido = 1;
+		
+		    salvar_msg(_desti, "inbox", "log_in.txt");
+		
+		    std::fstream read_log_msg;
+	    	read_log_msg.open(("Data/" + _desti + "/" + "inbox" + "/" + "log_in.txt").c_str(), std::ios::in);
+
+	    	bool flag = false;
+		
+	    	std::string linha;
+	    	std::vector <std::string> bloco;
+		
+		    while (!read_log_msg.eof())
+	    	{
+	      		std::getline(read_log_msg, linha);
+			
+	  		if (flag == false)
+		  	{
+	     			if ((linha == _file + " 0") ||
+	      				(linha == _file + " 1") ||
+		       			(linha == _file + " 2") ||
+			      		(linha == _file + " 3"))
+					
+				      	flag = true;
+		  	}
+		  	else 
+		    		if ((linha.size() == 0) ||
+		      			(linha == _file + " 0") ||
+		      			(linha == _file + " 1") ||
+		      			(linha == _file + " 2") ||
+		      			(linha == _file + " 3") ||
+			      		(linha == _file + " 4"))
+			        			continue;
+
+			  bloco.push_back(linha);
+
+			  linha.clear();
+		}
+
+		read_log_msg.close();
+
+		std::fstream write_log_msg;
+		write_log_msg.open(("Data/" + _desti + "/" + "inbox" + "/" + "log_in.txt").c_str(), std::ios::out);
+
+		for (unsigned int i = 0; i < bloco.size(); i++)
+        write_log_msg << bloco[i] << std::endl;
+
+		write_log_msg.close();
     }
 
     std::cout << " ==============================================================================" << std::endl;
