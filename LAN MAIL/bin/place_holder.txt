@@ -1,1 +1,0 @@
-#arquivo de texto para permitir o upload da pasta bin
