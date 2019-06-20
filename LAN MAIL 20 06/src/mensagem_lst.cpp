@@ -81,17 +81,16 @@ bool Mensagem_lst::escrever_msg()
 	//Para parar o loop da entrada, deve-se digitar --ok
     std::string items;
     
-	display_caixa("Assets/Write/Lst/lst1.txt", DEFAULT);
+	display_caixa("Assets/Write/Lst/lst2.txt", DEFAULT);
 
 	while(true){
-	    items.clear();
-	    std::cin >> items;
+	    std::getline(std::cin, items);
 	    if(items == "--ok"){
 	        break;
 	    }
 	    else{
 	        _lista.push_back(items);
-	        continue;
+		items.clear();
 	    }
 	}
 
