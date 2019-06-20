@@ -8,10 +8,21 @@
 //Valor do espacao disponivel para escrita no progrma (80 - 6(espaco das bordas))
 #define GAPSIZE 74
 
+#define NUMLINHAS 20
+
+/*Valor que determina quantos termos anteriores de um inserimento devem ser mostrados
+  durante um processo de ecrita de mensagem*/
+#define ANTERIOR 5
+
 //Espaco fixo ocupado pelas primeiras 3 linhas da funcao de exibir
 #define LINHA1SIZE 58
 #define LINHA2SIZE 10
 #define LINHA3SIZE  2
+
+//Valor da cor dos textos para a funcao display_caixa
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define DEFAULT "\033[m"
 
 //Construtor--------------------------------------------------------------------
 Mensagem_lst::Mensagem_lst(std::string file  , short lido       , long data,
@@ -65,5 +76,38 @@ void Mensagem_lst::exibir_msg()
 
 bool Mensagem_lst::escrever_msg()
 {
+	//Funcao para escrever os itens da lista
+	//Pede-se ao usuario que entre com os itens desejados
+	//Para parar o loop da entrada, deve-se digitar --ok
+    std::string items;
+    
+	display_caixa("Assets/Write/Gnr/gnr1.txt", DEFAULT);
 
+	while(true){
+	    items.clear();
+	    std::cin >> items;
+	    if(items == "--ok"){
+	        break;
+	    }
+	    else{
+	        _lista.push_back(items);
+	        continue;
+	    }
+	}
+
+    display_caixa("Assets/Write/write3.txt", DEFAULT);
+    char esc;
+
+    std::cout << "                                $: ";
+    std::cin  >> esc;
+
+    limpar_buffer();
+
+    if ((esc == 'S') || (esc == 's'))
+    {
+        //Funcao de enviar //Ainda nao implementada
+        return true;
+    }
+    else
+        return false;
 }
