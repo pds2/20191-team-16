@@ -7,13 +7,20 @@
 //Valor do espacao disponivel para escrita no progrma (80 - 6(espaco das bordas))
 #define GAPSIZE 74
 
+#define NUMLINHAS 20
+
 //Espaco fixo ocupado pelas primeiras 3 linhas da funcao de exibir
 #define LINHA1SIZE  6
 #define LINHA2SIZE 19
 #define LINHA3SIZE 23
-#define LINHA4SIZE 12
+#define LINHA4SIZE 11
 #define LINHA5SIZE  8
 #define LINHA6SIZE 26
+
+//Valor da cor dos textos para a funcao display_caixa
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define DEFAULT "\033[m"
 
 //Construtor--------------------------------------------------------------------
 Mensagem_cvt::Mensagem_cvt
@@ -98,6 +105,36 @@ void Mensagem_cvt::exibir_msg()
 }
 
 bool Mensagem_cvt::escrever_msg()
-{
-	//Place Holder
+{	
+	//Funcao para escrever a mensagem do tipo convite
+	//Pede-se ao usuario que entre com informacoes
+	//Que serao utilizadas num modelo pre-feito de convite
+	std::fstream arq;
+
+	display_caixa("Assets/Write/Cvt/cvt1.txt", DEFAULT);
+	std::getline(std::cin,_anfit);
+	display_caixa("Assets/Write/Cvt/cvt2.txt", DEFAULT);
+	std::getline(std::cin,_convi);
+	display_caixa("Assets/Write/Cvt/cvt3.txt", DEFAULT);
+	std::getline(std::cin, _lugar);
+	display_caixa("Assets/Write/Cvt/cvt4.txt", DEFAULT);
+	std::getline(std::cin, _event);
+	display_caixa("Assets/Write/Cvt/cvt5.txt", DEFAULT);
+	std::getline(std::cin, _dataevt);
+
+	display_caixa("Assets/Write/write3.txt", DEFAULT);
+   	char esc;
+
+   	std::cout << "                                $: ";
+    	std::cin  >> esc;
+
+    	limpar_buffer();
+
+    	if ((esc == 'S') || (esc == 's'))
+    	{
+        	//Funcao de enviar //Ainda nao implementada
+        	return true;
+    	}
+    	else
+        	return false;
 }
