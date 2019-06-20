@@ -1,0 +1,52 @@
+\hypertarget{structdoctest_1_1_i_reporter}{}\section{doctest\+::I\+Reporter Struct Reference}
+\label{structdoctest_1_1_i_reporter}\index{doctest::IReporter@{doctest::IReporter}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a1335d45ff5d6f4243ec0bcae9e5e5d18}\label{structdoctest_1_1_i_reporter_a1335d45ff5d6f4243ec0bcae9e5e5d18}} 
+virtual void {\bfseries test\+\_\+run\+\_\+start} (const \mbox{\hyperlink{structdoctest_1_1_context_options}{Context\+Options}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a610495b7caa29e36b5ea62bff62952ed}\label{structdoctest_1_1_i_reporter_a610495b7caa29e36b5ea62bff62952ed}} 
+virtual void {\bfseries test\+\_\+run\+\_\+end} (const \mbox{\hyperlink{structdoctest_1_1_test_run_stats}{Test\+Run\+Stats}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_afa107df2d0230607e2f86f1876f48526}\label{structdoctest_1_1_i_reporter_afa107df2d0230607e2f86f1876f48526}} 
+virtual void {\bfseries test\+\_\+case\+\_\+start} (const \mbox{\hyperlink{structdoctest_1_1_test_case_data}{Test\+Case\+Data}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a43f8f19681dd5d42218ecb4fd935cda7}\label{structdoctest_1_1_i_reporter_a43f8f19681dd5d42218ecb4fd935cda7}} 
+virtual void {\bfseries test\+\_\+case\+\_\+end} (const \mbox{\hyperlink{structdoctest_1_1_current_test_case_stats}{Current\+Test\+Case\+Stats}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a03ef82d6fb9afe8b0e3bbe24f28dd268}\label{structdoctest_1_1_i_reporter_a03ef82d6fb9afe8b0e3bbe24f28dd268}} 
+virtual void {\bfseries subcase\+\_\+start} (const \mbox{\hyperlink{structdoctest_1_1_subcase_signature}{Subcase\+Signature}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a8c06ebca73ea84a95de85da757de243c}\label{structdoctest_1_1_i_reporter_a8c06ebca73ea84a95de85da757de243c}} 
+virtual void {\bfseries subcase\+\_\+end} (const \mbox{\hyperlink{structdoctest_1_1_subcase_signature}{Subcase\+Signature}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a5bb54923eab233bb02f2fcfc178fa12a}\label{structdoctest_1_1_i_reporter_a5bb54923eab233bb02f2fcfc178fa12a}} 
+virtual void {\bfseries log\+\_\+assert} (const \mbox{\hyperlink{structdoctest_1_1_assert_data}{Assert\+Data}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a2b2cb4f15aa7417d4903a0edc3147018}\label{structdoctest_1_1_i_reporter_a2b2cb4f15aa7417d4903a0edc3147018}} 
+virtual void {\bfseries log\+\_\+message} (const \mbox{\hyperlink{structdoctest_1_1_message_data}{Message\+Data}} \&)=0
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_ab4ecfea9cd9582aad4a5e90e0c8ba45d}\label{structdoctest_1_1_i_reporter_ab4ecfea9cd9582aad4a5e90e0c8ba45d}} 
+virtual void {\bfseries test\+\_\+case\+\_\+skipped} (const \mbox{\hyperlink{structdoctest_1_1_test_case_data}{Test\+Case\+Data}} \&)=0
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a7d520de46d9104c0eeb02375fabad32d}\label{structdoctest_1_1_i_reporter_a7d520de46d9104c0eeb02375fabad32d}} 
+static int {\bfseries get\+\_\+num\+\_\+active\+\_\+contexts} ()
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_a67a2da62d754d3b517d6d50ef210a988}\label{structdoctest_1_1_i_reporter_a67a2da62d754d3b517d6d50ef210a988}} 
+static const \mbox{\hyperlink{structdoctest_1_1_i_context_scope}{I\+Context\+Scope}} $\ast$const  $\ast$ {\bfseries get\+\_\+active\+\_\+contexts} ()
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_ac8b96fef046edc609a3374a61b84797d}\label{structdoctest_1_1_i_reporter_ac8b96fef046edc609a3374a61b84797d}} 
+static int {\bfseries get\+\_\+num\+\_\+stringified\+\_\+contexts} ()
+\item 
+\mbox{\Hypertarget{structdoctest_1_1_i_reporter_acc1a86891876a957c6fc382af7894f99}\label{structdoctest_1_1_i_reporter_acc1a86891876a957c6fc382af7894f99}} 
+static const \mbox{\hyperlink{classdoctest_1_1_string}{String}} $\ast$ {\bfseries get\+\_\+stringified\+\_\+contexts} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+third\+\_\+party/doctest.\+h\end{DoxyCompactItemize}
