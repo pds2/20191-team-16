@@ -5,7 +5,6 @@
 #include "mensagem_gnr.h"
 #include "mensagem_lst.h"
 #include "mensagem_cvt.h"
-#include "mensagem_tab.h"
 #include "mensagem_img.h"
 
 #include <string>
@@ -156,43 +155,6 @@ void Sessao::add_msg_cvt(std::string file , short lido, long data, std::string r
     }
 }
 
-//Funcao que carrega os dados especificos de uma mensagem em tabela
-void Sessao::add_msg_tab(std::string file , short lido, long data, std::string remet,
-                         std::string desti, std::string assun, std::fstream &read_target)
-{
-    //Lendo o conteudo do texto da mensagem em tabela
-    short unipl;
-    std::vector <std::string> tab;
-
-    std::string elemen;
-
-    read_target >> unipl;
-
-    //lendo os elementos da tabela
-    while (!read_target.eof())
-    {
-        read_target >> elemen;
-
-        if (elemen.size() == 0) continue;
-
-        tab.push_back(elemen);
-
-        elemen.clear();
-    }
-
-    read_target.close();
-
-    //Criando um objeto tabela com os dados coletados
-    Mensagem_tab x(file, lido, data , remet, desti, assun, unipl, tab);
-
-    //Decidindo se joga ou nao o objeto recemcriado nos vetores box3 e time
-    if (filtro_msg(x))
-    {
-        _box3.push_back(x);
-        add_msg_time(x.get_data());
-    }
-}
-
 //Funcao que carrega os dados especificos de uma mensagem em imagem
 void Sessao::add_msg_img(std::string file , short lido, long data, std::string remet,
                          std::string desti, std::string assun, std::fstream &read_target)
@@ -219,7 +181,7 @@ void Sessao::add_msg_img(std::string file , short lido, long data, std::string r
     //Decidindo se joga ou nao o objeto recemcriado nos vetores box4 e time
     if (filtro_msg(x))
     {
-        _box4.push_back(x);
+        _box3.push_back(x);
         add_msg_time(x.get_data());
     }
 }
@@ -301,9 +263,8 @@ void Sessao::delete_msg(Mensagem &msg)
            (linha == msg.get_file() + " 0") ||
            (linha == msg.get_file() + " 1") ||
            (linha == msg.get_file() + " 2") ||
-           (linha == msg.get_file() + " 3") ||
-           (linha == msg.get_file() + " 4"))
-           continue;
+           (linha == msg.get_file() + " 3"))
+				continue;
 
         bloco.push_back(linha);
 
@@ -644,8 +605,6 @@ void Sessao::set_box()
         else if (flag == 2)
             add_msg_cvt(file, lido, data, remet, desti, assun, read_target);
         else if (flag == 3)
-            add_msg_tab(file, lido, data, remet, desti, assun, read_target);
-        else if (flag == 4)
             add_msg_img(file, lido, data, remet, desti, assun, read_target);
 
         //"Anulando" essas variaveis
@@ -695,10 +654,6 @@ void Sessao::listar_box()
         if (okflag == true) continue;
         else for (unsigned int j = 0; j < _box3.size(); j++)
                 achar_msg(i, okflag, _time[i], _box3[j]);
-
-        if (okflag == true) continue;
-        else for (unsigned int j = 0; j < _box4.size(); j++)
-                achar_msg(i, okflag, _time[i], _box4[j]);
     }
 
     std::cout << " ============================================================================== " << std::endl;
@@ -717,9 +672,6 @@ void Sessao::limpar_box(Mensagem &msg)
 
     for (unsigned int i = 0; i < _box3.size(); i++)
         if (_box3[i].get_data() != msg.get_data()) _box3.erase(_box3.begin() + i);
-
-    for (unsigned int i = 0; i < _box4.size(); i++)
-        if (_box4[i].get_data() != msg.get_data()) _box4.erase(_box4.begin() + i);
 }
 
 //Descarrega os elementos da box da memoria
@@ -730,7 +682,6 @@ void Sessao::limpar_box_all()
     _box1.clear();
     _box2.clear();
     _box3.clear();
-    _box4.clear();
     _time.clear();
 }
 
@@ -743,7 +694,6 @@ void Sessao::agir_box(long data, short j)
     if (_box1.size() > maxsize) maxsize = _box1.size();
     if (_box2.size() > maxsize) maxsize = _box2.size();
     if (_box3.size() > maxsize) maxsize = _box3.size();
-    if (_box4.size() > maxsize) maxsize = _box4.size();
 
     for (unsigned int i = 0; i < maxsize; i++)
     {
@@ -772,13 +722,6 @@ void Sessao::agir_box(long data, short j)
         {
             if      (j == 0) delete_msg(_box3[i]);
             else if (j == 1) print_msg (_box3[i]);
-
-            break;
-        }
-        if ((i < _box4.size()) && (_box4[i].get_data() == data))
-        {
-            if      (j == 0) delete_msg(_box4[i]);
-            else if (j == 1) print_msg (_box4[i]);
 
             break;
         }
@@ -876,12 +819,6 @@ void Sessao::criar_msg()
 				msg.enviar_msg();
         }
         else if (esco == "3")
-        {
-            Mensagem_tab msg("", 0, 0, _nome, "", assun, 0, {});
-            if (escrever_msg(msg))
-				msg.enviar_msg();
-        }
-        else if (esco == "4")
         {
             Mensagem_img msg("", 0, 0, _nome, "", assun, {});
             if (escrever_msg(msg))
