@@ -81,7 +81,7 @@ bool Mensagem_lst::escrever_msg()
 	//Para parar o loop da entrada, deve-se digitar --ok
     std::string items;
     
-	display_caixa("Assets/Write/Gnr/gnr1.txt", DEFAULT);
+	display_caixa("Assets/Write/Lst/lst1.txt", DEFAULT);
 
 	while(true){
 	    items.clear();
