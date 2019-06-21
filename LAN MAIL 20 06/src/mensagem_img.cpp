@@ -106,6 +106,7 @@ bool Mensagem_img::escrever_msg()
 
 	while(true){
 		display_caixa("Assets/Write/Img/img1.txt", DEFAULT);
+		std::cout << "                                $: ";
 		std::cin >> escolha;
 		limpar_buffer();
 		if(escolha == "1"){
