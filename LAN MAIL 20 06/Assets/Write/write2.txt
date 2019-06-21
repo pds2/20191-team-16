@@ -8,7 +8,7 @@
            ==========================================================
            =                                                        =
            =       Escolha o tipo de mensagem a ser escrita         =
-           =  [0]generica [1]lista [2]convite [3]tabela [4]imagem   =
+           =      [0]generica [1]lista [2]convite [3]imagem         =
            ==========================================================
 
 
