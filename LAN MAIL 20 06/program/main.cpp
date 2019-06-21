@@ -149,10 +149,10 @@ int main()
                         {
                             sessao.set_pagina(sessao.get_pagina() - 1);
 
-                            sessao.set_beginbox(sessao.get_beginbox() - sessao.get_endbox());
+                            sessao.set_endbox(sessao.get_endbox() - sessao.get_beginbox());
 
-                            sessao.set_endbox(sessao.get_endbox() + sessao.get_endbox());
-                        }
+                            sessao.set_beginbox(sessao.get_beginbox() - sessao.get_beginbox());
+ 			}
                     }
                     
                     sessao.limpar_box_all();
