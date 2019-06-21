@@ -80,10 +80,6 @@ private:
       de uma mensagem: data de emissao, */
     void achar_msg(unsigned int i, bool &okflag, long timepos, Mensagem &boxpos);
 
-    /*Submetodo de agir_box(). Funcao que deleta os dados
-    armazenados no disco referente a essa mensagem*/
-    void delete_msg(Mensagem &msg);
-
     /*Submetodo de agir_box(). Exibe na tela os dados da mensagem,
       seguindo o polimorfismo estabelecido entre elas*/
     void print_msg(Mensagem &msg);
@@ -165,13 +161,17 @@ public:
 
     /*Funcao que busca uma posicao do vector mensagem, na lista exibida na tela e executa
       uma das seguintes acoes: exibir e deletar a mensagem*/
-    void agir_box(long data, short j);
+    void agir_box(long data);
 
     //Funcao que escreve uma mensagem para poder enviar a outros usuarios
     void criar_msg();
 
     //Funcao que envia a mensagem
     void enviar_msg();
+	
+    /*Funcao que deleta os dados
+    armazenados no disco referente a essa mensagem*/
+    void delete_msg();
 
     /*Função que permite ao usuário alterar suas configurações de registro, que ocorrerão
      no disco. (Alterar nome de usuário/Alterar senha/Deletar conta/voltar ao hub)*/
