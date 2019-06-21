@@ -12,7 +12,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstdio>
-
+#include <sys/stat.h>
 //Posicao de corte para a string data
 #define SPLIT   8
 //Numero de digitos para representar o ano AAAA
@@ -25,6 +25,9 @@
 
 //Valor do espacao disponivel para escrita no programa (80 - 6(espaco das bordas))
 #define GAPSIZE2 74
+
+//Valor que define acesso de pastas criadas. 0777 = acesso total
+#define ACESS 0777
 
 //Valor da cor dos textos para a funcao display_caixa
 #define RED     "\033[31m"
@@ -239,47 +242,6 @@ void Sessao::achar_msg(unsigned int i, bool &okflag, long timepos, Mensagem &box
 
         okflag = true;
     }
-}
-
-void Sessao::delete_msg(Mensagem &msg)
-{
-    //Primeiro deletar o arquivo de texto que contem os dados da mensagem_gnr
-    remove(("Data/" + _nome + "/" + _readbox+ "/" + msg.get_file()).c_str());
-
-    //Remover a referencia do arquivo de texto no seu respectivo log_[][].txt
-
-    //Vetor que armazena as linhas do arquivo log_[][].texto
-    std::string linha;
-    std::vector <std::string> bloco;
-
-    std::fstream read_log_msg;
-    read_log_msg.open(("Data/" + _nome + "/" + _readbox+ "/" + _readlog).c_str(), std::ios::in);
-
-    while (!read_log_msg.eof())
-    {
-        std::getline(read_log_msg, linha);
-
-        if ((linha.size() == 0) ||
-           (linha == msg.get_file() + " 0") ||
-           (linha == msg.get_file() + " 1") ||
-           (linha == msg.get_file() + " 2") ||
-           (linha == msg.get_file() + " 3"))
-				continue;
-
-        bloco.push_back(linha);
-
-        linha.clear();
-    }
-
-    read_log_msg.close();
-
-    std::fstream write_log_msg;
-    write_log_msg.open(("Data/" + _nome + "/" + _readbox+ "/" + _readlog).c_str(), std::ios::out);
-
-    for (unsigned int i = 0; i < bloco.size(); i++)
-        write_log_msg << bloco[i] << std::endl;
-
-    write_log_msg.close();
 }
 
 void Sessao::print_msg(Mensagem &msg)
@@ -670,7 +632,7 @@ void Sessao::limpar_box_all()
     _time.clear();
 }
 
-void Sessao::agir_box(long data, short j)
+void Sessao::agir_box(long data)
 {
     unsigned int maxsize;
 
@@ -684,29 +646,25 @@ void Sessao::agir_box(long data, short j)
     {
         if ((i < _box0.size()) && (_box0[i].get_data() == data))
         {
-            if      (j == 0) delete_msg(_box0[i]);
-            else if (j == 1) print_msg (_box0[i]);
+			print_msg (_box0[i]);
 
             break;
         }
         if ((i < _box1.size()) && (_box1[i].get_data() == data))
         {
-            if      (j == 0) delete_msg(_box1[i]);
-            else if (j == 1) print_msg (_box1[i]);
+			print_msg (_box1[i]);
 
             break;
         }
         if ((i < _box2.size()) && (_box2[i].get_data() == data))
         {
-            if      (j == 0) delete_msg(_box2[i]);
-            else if (j == 1) print_msg (_box2[i]);
+            print_msg (_box2[i]);
 
             break;
         }
         if ((i < _box3.size()) && (_box3[i].get_data() == data))
         {
-            if      (j == 0) delete_msg(_box3[i]);
-            else if (j == 1) print_msg (_box3[i]);
+            print_msg (_box3[i]);
 
             break;
         }
@@ -824,4 +782,16 @@ void Sessao::criar_msg()
 
         break;
     }
+}
+
+void Sessao::delete_msg()
+{
+    system(("rm -rf Data/" + _nome + "/" + _readbox).c_str());
+	
+	mkdir ("Data/" + _nome + "/" + _readbox).c_str(), ACESS);
+	
+	std::fstream create_log;
+	create_log.open(("Data/" + _nome + "/" + _readbox + "/" + _readlog).c_str(), std::ios::out);
+	create_log.close();
+	
 }
