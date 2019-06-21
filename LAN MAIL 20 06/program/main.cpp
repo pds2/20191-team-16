@@ -60,7 +60,7 @@ int main()
                     std::cout << "\n $: ";
                     std::cin  >> esc;
 					
-					limpar_buffer();
+		    limpar_buffer();
 
                     if (esc ==  1)
                     {
@@ -69,7 +69,7 @@ int main()
                         std::cout << " $: Qual?: ";
                         short esc2;
 						
-						limpar_buffer();
+			limpar_buffer();
 
                         std::cin >> esc2;
 
@@ -79,7 +79,7 @@ int main()
 
                             sessao.agir_box(sessao.get_time(esc2));
 
-							std::cout << "Pressione Enter para voltar ao HUB " << std::endl;
+			    std::cout << " Pressione Enter para voltar ao HUB " << std::endl;
 							
                             botao_enter();
                         }
@@ -147,9 +147,9 @@ int main()
                         {
                             sessao.set_pagina(sessao.get_pagina() - 1);
 
-                            sessao.set_beginbox(sessao.get_beginbox() - sessao.get_endbox());
+                            sessao.set_endbox(sessao.get_endbox() - sessao.get_beginbox());
 
-                            sessao.set_endbox(sessao.get_endbox() + sessao.get_endbox());
+                            sessao.set_beginbox(sessao.get_beginbox() - sessao.get_beginbox());
                         }
                     }
                     
