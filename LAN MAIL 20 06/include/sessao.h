@@ -159,10 +159,6 @@ public:
     listar em ordem cronologica(do mais recente para o mais antigo) as mensagens*/
     void listar_box();
 
-    /*Funcao que limpa todas as boxes de mensagem e time, com excessao da mensagem
-      inserida no escopo*/
-    void limpar_box(Mensagem &msg);
-
     /*Limpa todos os vetores de mensagens e o _time. Chamado toda a vez que e deixado
       o HUB durante a sessao*/
     void limpar_box_all();
