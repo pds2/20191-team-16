@@ -59,6 +59,8 @@ int main()
 
                     std::cout << "\n $: ";
                     std::cin  >> esc;
+					
+					limpar_buffer();
 
                     if (esc ==  1)
                     {
@@ -75,8 +77,10 @@ int main()
                         {
                             system("clear");
 
-                            sessao.agir_box(sessao.get_time(esc2), 1);
+                            sessao.agir_box(sessao.get_time(esc2));
 
+							std::cout << "Pressione Enter para voltar ao HUB " << std::endl;
+							
                             botao_enter();
                         }
                     }
@@ -112,13 +116,7 @@ int main()
                     }
                     else if (esc ==  7)
                     {
-						std::cout << " $: Qual?: ";
-                        short esc2;
-                        std::cin >> esc2;
-						
-						limpar_buffer();
-						
-						sessao.agir_box(sessao.get_time(esc2), 0);
+						sessao.delete_msg();
                     }
                     else if (esc ==  8)
                         break;
@@ -149,10 +147,10 @@ int main()
                         {
                             sessao.set_pagina(sessao.get_pagina() - 1);
 
-                            sessao.set_endbox(sessao.get_endbox() - sessao.get_beginbox());
+                            sessao.set_beginbox(sessao.get_beginbox() - sessao.get_endbox());
 
-                            sessao.set_beginbox(sessao.get_beginbox() - sessao.get_beginbox());
- 			}
+                            sessao.set_endbox(sessao.get_endbox() + sessao.get_endbox());
+                        }
                     }
                     
                     sessao.limpar_box_all();
