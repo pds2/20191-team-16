@@ -788,7 +788,7 @@ void Sessao::delete_msg()
 {
     system(("rm -rf Data/" + _nome + "/" + _readbox).c_str());
 	
-	mkdir ("Data/" + _nome + "/" + _readbox).c_str(), ACESS);
+	mkdir (("Data/" + _nome + "/" + _readbox).c_str(), ACESS);
 	
 	std::fstream create_log;
 	create_log.open(("Data/" + _nome + "/" + _readbox + "/" + _readlog).c_str(), std::ios::out);
