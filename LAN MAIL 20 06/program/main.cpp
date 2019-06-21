@@ -116,7 +116,7 @@ int main()
                     }
                     else if (esc ==  7)
                     {
-						sessao.delete_msg();
+			sessao.delete_msg();
                     }
                     else if (esc ==  8)
                         break;
