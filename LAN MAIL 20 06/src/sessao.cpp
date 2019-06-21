@@ -659,21 +659,6 @@ void Sessao::listar_box()
     std::cout << " ============================================================================== " << std::endl;
 }
 
-void Sessao::limpar_box(Mensagem &msg)
-{
-    for (unsigned int i = 0; i < _box0.size(); i++)
-        if (_box0[i].get_data() != msg.get_data()) _box0.erase(_box0.begin() + i);
-
-    for (unsigned int i = 0; i < _box1.size(); i++)
-        if (_box1[i].get_data() != msg.get_data()) _box1.erase(_box1.begin() + i);
-
-    for (unsigned int i = 0; i < _box2.size(); i++)
-        if (_box2[i].get_data() != msg.get_data()) _box2.erase(_box2.begin() + i);
-
-    for (unsigned int i = 0; i < _box3.size(); i++)
-        if (_box3[i].get_data() != msg.get_data()) _box3.erase(_box3.begin() + i);
-}
-
 //Descarrega os elementos da box da memoria
 void Sessao::limpar_box_all()
 {
