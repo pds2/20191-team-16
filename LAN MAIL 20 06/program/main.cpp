@@ -60,16 +60,16 @@ int main()
                     std::cout << "\n $: ";
                     std::cin  >> esc;
 
-                    if      (esc ==  1)
+                    if (esc ==  1)
                     {
                         limpar_buffer();
 
                         std::cout << " $: Qual?: ";
                         short esc2;
+						
+						limpar_buffer();
 
                         std::cin >> esc2;
-
-                        limpar_buffer();
 
                         if ((esc2 < sessao.get_time_size()) && (esc2 >= 0))
                         {
@@ -79,89 +79,61 @@ int main()
 
                             botao_enter();
                         }
-
-                        sessao.limpar_box_all();
                     }
                     else if (esc ==  2)
                     {
-                        limpar_buffer();
-
                         sessao.set_boxflag(0);
                         sessao.set_readbox("outbox");
                         sessao.set_readlog("log_out.txt");
-
-                        sessao.limpar_box_all();
                     }
                     else if (esc ==  3)
                     {
-                        limpar_buffer();
-
                         sessao.set_boxflag(1);
                         sessao.set_readbox("inbox");
                         sessao.set_readlog("log_in.txt");
-
-                        sessao.limpar_box_all();
                     }
                     else if (esc ==  4)
                     {
-                        limpar_buffer();
-
                         sessao.set_boxflag(2);
                         sessao.set_readbox("inbox");
                         sessao.set_readlog("log_in.txt");
-
-                        sessao.limpar_box_all();
                     }
                     else if (esc ==  5)
                     {
-                        limpar_buffer();
-
                         sessao.set_boxflag(3);
                         sessao.set_readbox("inbox");
                         sessao.set_readlog("log_in.txt");
-
-                        sessao.limpar_box_all();
                     }
                     else if (esc ==  6)
                     {
-                        limpar_buffer();
-
                         sessao.limpar_box_all();
 
                         sessao.criar_msg();
                     }
                     else if (esc ==  7)
                     {
-                        limpar_buffer();
-
-                        std::cout << "Qual?: ";
+						std::cout << " $: Qual?: ";
                         short esc2;
                         std::cin >> esc2;
+						
+						limpar_buffer();
+						
+						sessao.agir_box(sessao.get_time(esc2), 0);
                     }
                     else if (esc ==  8)
                         break;
                     else if (esc ==  9)
                     {
-                        limpar_buffer();
-
                         sessao.config_conta();
-
-                        sessao.limpar_box_all();
                     }
                     else if (esc == 10)
                     {
-                        limpar_buffer();
-
                         sessao.set_boxflag(0);
                         sessao.set_readbox("inbox");
                         sessao.set_readlog("log_in.txt");
-
-                        sessao.limpar_box_all();
                     }
                     else if (esc == 11)
                     {
-                        limpar_buffer();
-
                         if (sessao.get_pagina() < sessao.get_paginamax())
                         {
                             sessao.set_pagina(sessao.get_pagina() + 1);
@@ -173,8 +145,6 @@ int main()
                     }
                     else if (esc == 12)
                     {
-                        limpar_buffer();
-
                         if (sessao.get_pagina() > 1)
                         {
                             sessao.set_pagina(sessao.get_pagina() - 1);
@@ -184,6 +154,8 @@ int main()
                             sessao.set_endbox(sessao.get_endbox() + sessao.get_endbox());
                         }
                     }
+                    
+                    sessao.limpar_box_all();
                 }
             }
         }
